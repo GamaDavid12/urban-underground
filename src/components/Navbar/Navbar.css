@@ -1,0 +1,46 @@
+.navbar {
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  padding: 8px 16px;
+  font-family: sans-serif;
+  height: 50px;
+}
+
+.menu-icon {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.search-bar input {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #373434;
+  color: #ffffff;
+  width: 200px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login {
+  color: #373434;
+  cursor: pointer;
+}
+
+.cart-button {
+  background-color: #373434;
+  color: #ffffff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
