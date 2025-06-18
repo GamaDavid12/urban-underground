@@ -1,4 +1,4 @@
-.loginFormContainer {
+.RecuCuentaContainer {
    background: linear-gradient(
     to bottom right,
     #010000(255, 255, 255, 0.1),
@@ -18,11 +18,11 @@
   font-family: 'Noto Sans', sans-serif;
 }
 
-.loginFormContainer h2 {
+.RecuCuentaContainer h2 {
   margin-bottom: 30px;
   font-size: 2em;
   font-weight: 200;
-  padding-right: 40%;
+  padding-right: 50%;
 }
 
 .inputGroup {
@@ -75,7 +75,7 @@
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(to right, #8A9A5B, #030113);
+  background: linear-gradient(to right, #030113, #8A9A5B);
   color: #FFFFFF;
   font-size: 1.1em;
   font-weight: 200;
@@ -84,7 +84,7 @@
 }
 
 .loginButton:hover {
-  background: linear-gradient(to right, #030113 , #8A9A5B);
+  background: linear-gradient(to right, #8A9A5B , #030113);
 }
 
 .forgotPassword {

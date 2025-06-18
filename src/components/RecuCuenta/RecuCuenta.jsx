@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from './LoginForm.module.css';
+import styles from './RecuCuenta.module.css';
 
-const LoginForm = () => {
+const RecuCuenta = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Iniciar sesión clickeado!');
   };
 
   return (
-    <div className={styles.loginFormContainer}>
-      <h2 className='font-noto text-2xl text-white'>Iniciar sesión</h2>
+    <div className={styles.RecuCuentaContainer}>
+      <h2 className='font-noto text-2xl text-white'>Registrarse</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
           
@@ -17,17 +17,19 @@ const LoginForm = () => {
         </div>
         <div className={styles.inputGroup}>
           
-          <input type="password" id="password" name="password" placeholder="Contraseña" required />
+          <input type="email" id="email" name="email" placeholder='Correo electrónico' required />
         </div>
-        <div className={styles.rememberMe}>
-          <input type="checkbox" id="rememberMe" name="rememberMe" />
-          <label htmlFor="rememberMe">Recuérdame</label>
+        <div className={styles.inputGroup}>
+          
+          <input type="password" id="password" name="contraseña" placeholder="Contraseña" required />
         </div>
-        <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
+        <div className={styles.inputGroup}>
+
+          <input type="password" id="confirmar password" name="Confirmar Contraseña" placeholder="Confirmar contraseña" required />
+        </div>
+
+        <button type="submit" className={styles.loginButton}>Registrarse</button>
       </form>
-      <p className={styles.forgotPassword}>
-        ¿Olvidaste tu contraseña? <a href="#">Restablecer</a>
-      </p>
 
       <div className={styles.socialLogin}>
         {/* Aquí deberías usar tus propias imágenes para los iconos de Google y Facebook */}
@@ -48,4 +50,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RecuCuenta;

@@ -1,4 +1,4 @@
-.background {
+.Ground {
   position: fixed; /* Esto es importante para que ocupe toda la ventana y no se mueva con el scroll */
   top: 0;
   left: 0;
