@@ -1,0 +1,11 @@
+.app {
+  display: flex;
+  /* CAMBIO CLAVE: justify-content a flex-end para alinear a la derecha */
+  justify-content: flex-end; /* Alinea los elementos hijos al final del contenedor (derecha) */
+  align-items: center;    /* Centra verticalmente */
+  min-height: 100vh;      /* Ocupa toda la altura de la ventana */
+  position: relative;
+  overflow: hidden;       /* Para evitar barras de desplazamiento */
+  padding-right: 10%; /* Opcional: añade un padding a la derecha para separarlo del borde */
+  /* Puedes ajustar este porcentaje o usar un valor en píxeles (ej. padding-right: 100px;) */
+}
