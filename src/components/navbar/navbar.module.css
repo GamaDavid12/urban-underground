@@ -1,0 +1,82 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d4d4d4; /* Gris claro */
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Menú (3 líneas tipo hamburguesa) */
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.menuLine {
+  height: 2px;
+  background-color: #000;
+  width: 100%;
+}
+
+/* Caja de búsqueda */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  width: 250px;
+}
+
+.searchIcon {
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/* Acciones a la derecha */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  color: black;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.cartBtn {
+  display: flex;
+  align-items: center;
+  background-color: #000;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.cartIcon {
+  margin-right: 0.4rem;
+}
