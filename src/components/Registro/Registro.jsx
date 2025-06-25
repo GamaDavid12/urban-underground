@@ -1,42 +1,40 @@
 import React from 'react';
-import styles from './LoginForm.module.css';
+import { Link } from 'react-router-dom';
+import styles from './Registro.module.css';
 
-const LoginForm = () => {
+const Registro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Iniciar sesión clickeado!');
+    alert('Registrarse clickeado!');
   };
 
   return (
-    <div className={styles.loginFormContainer}>
-      <h2 className='font-noto text-2xl text-white'>Iniciar sesión</h2>
+    <div className={styles.RegistroContainer}>
+      <h2 className='font-noto text-2xl text-white'>Registrarse</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
-          
           <input type="text" id="username" name="username" placeholder="Nombre de usuario" required />
         </div>
         <div className={styles.inputGroup}>
-          
-          <input type="password" id="password" name="password" placeholder="Contraseña" required />
+          <input type="email" id="email" name="email" placeholder='Correo electrónico' required />
         </div>
-        <div className={styles.rememberMe}>
-          <input type="checkbox" id="rememberMe" name="rememberMe" />
-          <label htmlFor="rememberMe">Recuérdame</label>
+        <div className={styles.inputGroup}>
+          <input type="password" id="password" name="contraseña" placeholder="Contraseña" required />
         </div>
-        <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
+        <div className={styles.inputGroup}>
+          <input type="password" id="confirmar password" name="Confirmar Contraseña" placeholder="Confirmar contraseña" required />
+        </div>
+
+        <button type="submit" className={styles.loginButton}>Registrarse</button>
       </form>
-      <p className={styles.forgotPassword}>
-        ¿Olvidaste tu contraseña? <a href="#">Restablecer</a>
-      </p>
 
       <div className={styles.socialLogin}>
-        {/* Aquí deberías usar tus propias imágenes para los iconos de Google y Facebook */}
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google" />
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/768px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook" />
       </div>
 
       <p className={styles.signupLink}>
-        ¿No tienes una cuenta? <a href="#">Registrarse</a>
+        ¿Ya tienes una cuenta? <Link to="/">Iniciar Sesión</Link>
       </p>
 
       <div className={styles.termsLinks}>
@@ -48,4 +46,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Registro;
