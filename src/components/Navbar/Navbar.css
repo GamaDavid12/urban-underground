@@ -1,0 +1,110 @@
+/* src/components/Navbar/Navbar.css */
+
+.navbar {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Mantenemos space-between para separar el left-group de .actions */
+  padding: 8px 16px;
+  font-family: sans-serif;
+  height: 50px;
+  color: #010000;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Nuevo estilo para el grupo de la izquierda */
+.left-group {
+  display: flex; /* Convierte este grupo en un contenedor flex */
+  align-items: center; /* Alinea verticalmente los elementos dentro de este grupo */
+  gap: 12px; /* Espacio entre el icono del menú y la barra de búsqueda */
+}
+
+.menu-icon {
+  /* margin-right: 12px; <--- Ya no es necesario si usamos 'gap' en .left-group */
+  cursor: pointer;
+}
+
+.search-bar input {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #373434;
+  color: #ffffff;
+  width: 200px;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #ccc;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login {
+  color: #373434;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cart-button {
+  background-color: #373434;
+  color: #ffffff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.cart-button:hover {
+  background-color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+        justify-content: center; /* En móvil, tal vez quieras que todo se centre */
+    }
+
+    .left-group { /* También ajusta el left-group para móviles */
+        width: 100%;
+        justify-content: center; /* Centra el contenido en pantallas pequeñas */
+        margin-bottom: 8px;
+    }
+
+    .menu-icon {
+        /* width: auto; No necesitamos 100% width aquí */
+        text-align: center;
+        margin-bottom: 0; /* Ya no es necesario si el left-group maneja el margin */
+        margin-right: 0;
+    }
+
+    .search-bar {
+        width: auto; /* Dejar que el input determine su ancho inicial */
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .search-bar input {
+        width: calc(100% - 24px); /* Sigue siendo útil para el input específico */
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: center;
+    }
+}

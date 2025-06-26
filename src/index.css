@@ -10,7 +10,7 @@ body {
   font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1a1a1a; /* Un color de fondo muy oscuro por si la imagen no carga */
+  background-color: #1a1a1a;
 }
 
 code {

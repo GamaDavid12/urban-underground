@@ -1,0 +1,153 @@
+.App {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.contact-page {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/fondito.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; 
+  box-sizing: border-box;
+}
+
+.contact-page .background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0; 
+}
+
+
+.contact-page > *:not(.background-overlay) {
+  z-index: 1;
+}
+
+
+.contact-header {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+}
+
+.contact-header .contact-title {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 3.0em;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+}
+
+.contact-header .contact-subtitle-page {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2em;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+
+.contact-form-container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+}
+
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color:#373434;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: calc(100% - 16px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #f8f8f8;
+  color: #373434;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #8c8686;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-button {
+  background-color: #333;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #555;
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 768px) {
+  .contact-header .contact-title {
+    font-size: 2.5em;
+  }
+  .contact-header .contact-subtitle-page {
+    font-size: 1em;
+  }
+  .contact-form-container {
+    width: 95%;
+    padding: 20px;
+  }
+}
