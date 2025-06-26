@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaGoogle, FaFacebookF } from 'react-icons/fa';
+import { Link } from 'react-router';
+import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import styles from './LoginForm.module.css';
 
@@ -15,10 +15,10 @@ const LoginForm = () => {
       <h2 className='font-noto text-2xl text-white'>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
-          <input type="text" id="username" name="username" placeholder="Nombre de usuario" required />
+          <input type="text" name="username" placeholder="Nombre de usuario" required />
         </div>
         <div className={styles.inputGroup}>
-          <input type="password" id="password" name="password" placeholder="Contraseña" required />
+          <input type="password" name="password" placeholder="Contraseña" required />
         </div>
         <div className={styles.rememberMe}>
           <input type="checkbox" id="rememberMe" name="rememberMe" />
@@ -26,17 +26,18 @@ const LoginForm = () => {
         </div>
         <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
       </form>
+
       <p className={styles.forgotPassword}>
-        ¿Olvidaste tu contraseña? <a href="#">Restablecer</a>
+        ¿Olvidaste tu contraseña? <Link to="/recuperar">Restablecer</Link>
       </p>
 
-<div className={styles.socialLogin}>
-    <FcGoogle size={24} className={styles.socialIcon} />
-    <FaFacebookF size={24} className={styles.socialIcon} />
-</div>
+      <div className={styles.socialLogin}>
+             <FcGoogle size={24} className={styles.socialIcon} />
+             <FaFacebookF size={24} className={styles.socialIcon} />
+           </div>
 
       <p className={styles.signupLink}>
-        ¿No tienes una cuenta? <Link to="/register">Registrarse</Link>
+        ¿No tienes una cuenta? <Link to="/registro">Registrarse</Link>
       </p>
 
       <div className={styles.termsLinks}>
