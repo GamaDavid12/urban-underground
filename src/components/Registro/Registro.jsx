@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGoogle, FaFacebookF } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 import styles from './Registro.module.css';
 
 const Registro = () => {
@@ -28,10 +30,12 @@ const Registro = () => {
         <button type="submit" className={styles.loginButton}>Registrarse</button>
       </form>
 
-      <div className={styles.socialLogin}>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/768px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook" />
-      </div>
+<div className={styles.socialLogin}>
+    <FcGoogle size={24} className={styles.socialIcon} />
+    <FaFacebookF size={24} className={styles.socialIcon} />
+</div>
+
+
 
       <p className={styles.signupLink}>
         ¿Ya tienes una cuenta? <Link to="/">Iniciar Sesión</Link>

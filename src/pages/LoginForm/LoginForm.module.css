@@ -75,7 +75,7 @@
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(to right, #8A9A5B, #030113);
+  background: linear-gradient(to right, #010000, #F8BD00);
   color: #FFFFFF;
   font-size: 1.1em;
   font-weight: 200;
@@ -84,7 +84,7 @@
 }
 
 .loginButton:hover {
-  background: linear-gradient(to right, #030113 , #8A9A5B);
+  background: linear-gradient(to right, #F8BD00 , #F8BD00);
 }
 
 .forgotPassword {
@@ -151,4 +151,24 @@
 
 .termsLinks a:hover {
   text-decoration: underline;
+}
+
+.socialLogin {
+    margin-top: 30px; 
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.socialIcon {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.socialIcon:hover {
+    transform: scale(1.1);
+}
+
+.facebookIcon {
+  color: #3b5998;
 }
