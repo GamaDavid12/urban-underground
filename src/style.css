@@ -56,7 +56,7 @@ code {
 
 .contact-header .contact-title {
   font-family: 'Arial Black', sans-serif;
-  font-size: 3.5em;
+  font-size: 3.0em;
   letter-spacing: 2px;
   margin-bottom: 0px;
 }
@@ -93,7 +93,7 @@ code {
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #333;
+  color:#373434;
   font-size: 1em;
   font-weight: bold;
 }
@@ -106,12 +106,12 @@ code {
   border-radius: 4px;
   font-size: 1rem;
   background-color: #f8f8f8;
-  color: #333;
+  color: #373434;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #aaa;
+  color: #8c8686;
 }
 
 .form-group textarea {
