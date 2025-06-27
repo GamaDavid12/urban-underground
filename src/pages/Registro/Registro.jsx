@@ -1,32 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-import styles from './Registro.module.css';
+import React from "react";
+import { Link } from "react-router";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import styles from "./Registro.module.css";
+import TextField from "../../components/TextField/TextField";
 
 const Registro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Registrarse clickeado!');
+    alert("Registrarse clickeado!");
   };
 
   return (
     <div className={styles.RegistroContainer}>
-      <h2 className='font-noto text-2xl text-white'>Registrarse</h2>
+      <h2 className="font-noto text-2xl text-white">Registrarse</h2>
       <form onSubmit={handleSubmit}>
-        <div className={styles.inputGroup}>
-          <input type="text" name="username" placeholder="Nombre de usuario" required />
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="email" name="email" placeholder="Correo electrónico" required />
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="password" name="password" placeholder="Contraseña" required />
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required />
-        </div>
-        <button type="submit" className={styles.loginButton}>Registrarse</button>
+        <TextField
+          type="text"
+          name="username"
+          placeholder="Nombre de usuario"
+          required
+        />
+        <TextField
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          required
+        />
+        <TextField
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          required
+        />
+        <TextField
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirmar contraseña"
+          required
+        />
+
+        <button type="submit" className={styles.loginButton}>
+          Registrarse
+        </button>
       </form>
 
       <div className={styles.socialLogin}>
