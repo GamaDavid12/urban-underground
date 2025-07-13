@@ -1,4 +1,3 @@
-// src/routes.jsx
 import React from 'react';
 import LoginForm from './pages/LoginForm/LoginForm';
 import Registro from './pages/Registro/Registro';
