@@ -1,8 +1,8 @@
 .footer {
-  background-color: #FFFFFF;
+  background-color: #010000;
   padding: 2rem;
   font-family: sans-serif;
-  color: #010000;
+  color: #FFFFFF
 }
 
 .footer-top {
@@ -22,7 +22,7 @@
 
 .icon {
   cursor: pointer;
-  color: #010000;
+  color: #FFFFFF;
   transition: transform 0.2s;
 }
 
@@ -61,13 +61,13 @@
   padding: 0.5rem;
   border: none;
   background-color: #f4c602;
-  color: #010000;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
 .subscribe-form button {
-  background-color: #010000;
-  color: white;
+  background-color: #222;
+  color: #FFFFFF;
   border: none;
   padding: 0.5rem 1rem;
   font-weight: bold;

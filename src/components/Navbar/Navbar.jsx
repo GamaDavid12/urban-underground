@@ -1,5 +1,3 @@
-// src/components/Navbar/Navbar.jsx
-
 import React from "react";
 import "./Navbar.css";
 import { Menu, ShoppingCart } from "lucide-react";
@@ -7,10 +5,9 @@ import { Menu, ShoppingCart } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      {/* Nuevo div para agrupar el icono del menú y la barra de búsqueda */}
       <div className="left-group">
         <div className="menu-icon">
-          <Menu size={24} color="#373434" />
+          <Menu size={24} color="#ffffff" />
         </div>
 
         <div className="search-bar">
