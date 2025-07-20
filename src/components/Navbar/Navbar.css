@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #FFFFFF;
+  background-color: #010000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
 }
 
 .search-bar input::placeholder {
-  color: #ccc;
+  color: #ffffff;
 }
 
 .actions {
@@ -45,7 +45,7 @@
 }
 
 .login {
-  color: #373434;
+  color: #ffffff;
   cursor: pointer;
   font-weight: 600;
 }
@@ -65,7 +65,7 @@
 }
 
 .cart-button:hover {
-  background-color: #555;
+  background-color: #ffffff;
 }
 
 @media (max-width: 768px) {

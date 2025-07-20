@@ -1,9 +1,0 @@
-.app {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  padding-right: 10%;
-}

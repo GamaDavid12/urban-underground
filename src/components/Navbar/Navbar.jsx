@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="left-group">
         <div className="menu-icon">
-          <Menu size={24} color="#373434" />
+          <Menu size={24} color="#ffffff" />
         </div>
 
         <div className="search-bar">
