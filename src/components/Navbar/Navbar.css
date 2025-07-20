@@ -1,10 +1,8 @@
-/* src/components/Navbar/Navbar.css */
-
 .navbar {
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Mantenemos space-between para separar el left-group de .actions */
+  justify-content: space-between;
   padding: 8px 16px;
   font-family: sans-serif;
   height: 50px;
@@ -16,15 +14,13 @@
   z-index: 1000;
 }
 
-/* Nuevo estilo para el grupo de la izquierda */
 .left-group {
-  display: flex; /* Convierte este grupo en un contenedor flex */
-  align-items: center; /* Alinea verticalmente los elementos dentro de este grupo */
-  gap: 12px; /* Espacio entre el icono del menú y la barra de búsqueda */
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .menu-icon {
-  /* margin-right: 12px; <--- Ya no es necesario si usamos 'gap' en .left-group */
   cursor: pointer;
 }
 
@@ -72,35 +68,33 @@
   background-color: #555;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .navbar {
         flex-wrap: wrap;
         height: auto;
         padding: 10px;
-        justify-content: center; /* En móvil, tal vez quieras que todo se centre */
+        justify-content: center;
     }
 
-    .left-group { /* También ajusta el left-group para móviles */
+    .left-group {
         width: 100%;
-        justify-content: center; /* Centra el contenido en pantallas pequeñas */
+        justify-content: center;
         margin-bottom: 8px;
     }
 
     .menu-icon {
-        /* width: auto; No necesitamos 100% width aquí */
         text-align: center;
-        margin-bottom: 0; /* Ya no es necesario si el left-group maneja el margin */
+        margin-bottom: 0;
         margin-right: 0;
     }
 
     .search-bar {
-        width: auto; /* Dejar que el input determine su ancho inicial */
+        width: auto;
         text-align: center;
         margin-bottom: 0;
     }
     .search-bar input {
-        width: calc(100% - 24px); /* Sigue siendo útil para el input específico */
+        width: calc(100% - 24px);
     }
 
     .actions {

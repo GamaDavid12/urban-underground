@@ -1,4 +1,3 @@
-import React from 'react';
 import './Footer.css';
 import { FaXTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa6';
 
