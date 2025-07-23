@@ -1,12 +1,11 @@
-import React from "react";
 import "./Navbar.css";
 import { Menu, ShoppingCart } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar }) => {
   return (
     <nav className="navbar">
       <div className="left-group">
-        <div className="menu-icon">
+        <div className="menu-icon" onClick={toggleSidebar}>
           <Menu size={24} color="#ffffff" />
         </div>
 
