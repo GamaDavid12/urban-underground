@@ -18,7 +18,7 @@ const MainAppContent = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const authPaths = ['/', '/registro', '/iniciar-sesion', '/recuperar']; 
+  const authPaths = ['/registro', '/iniciar-sesion', '/recuperar']; 
   const shouldShowFullLayout = !authPaths.includes(location.pathname);
 
   const shouldShowAuthBackground = authPaths.includes(location.pathname);
