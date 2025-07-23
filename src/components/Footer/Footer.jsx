@@ -1,5 +1,6 @@
 import './Footer.css';
 import { FaXTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -36,7 +37,9 @@ export default function Footer() {
           <p>Suscríbete para recibir ofertas y novedades exclusivas.</p>
           <div className="subscribe-form">
             <input type="email" placeholder="Correo electrónico..." />
-            <button>REGÍSTRATE</button>
+            <Link to="/registro">
+              <button>REGÍSTRATE</button>
+            </Link>
           </div>
         </div>
       </div>

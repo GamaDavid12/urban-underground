@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './AuthInput.module.css';
 
 const AuthInput = ({ id, label, type, name, placeholder, required = false, value, onChange, className }) => {

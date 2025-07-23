@@ -1,8 +1,8 @@
 .loginFormContainer {
-  background: linear-gradient(
+   background: linear-gradient(
     to bottom right,
-    rgba(255, 255, 255, 0.1), /* Corrected: Use rgba() for transparent colors */
-    rgba(200, 255, 255, 0.05) /* Corrected: Use rgba() for transparent colors */
+    #010000(255, 255, 255, 0.1),
+    #F8BD00(200, 255, 255, 0.05)
   );
   padding: 40px;
   border-radius: 40px;
@@ -16,6 +16,8 @@
   position: relative;
   z-index: 1;
   font-family: 'Noto Sans', sans-serif;
+    margin-left: auto;
+  margin-right: 100px; 
 }
 
 .loginFormContainer h2 {
@@ -75,7 +77,6 @@
   padding: 15px;
   border: none;
   border-radius: 5px;
-  /* Corrected: Use valid color values for linear-gradient */
   background: linear-gradient(to right, #010000, #F8BD00);
   color: #FFFFFF;
   font-size: 1.1em;
@@ -158,19 +159,19 @@
 }
 
 .socialLogin {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+    margin-top: 30px; 
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .socialIcon {
-  cursor: pointer;
-  transition: transform 0.2s ease;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .socialIcon:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .facebookIcon {

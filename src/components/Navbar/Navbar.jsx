@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import { Menu, ShoppingCart } from "lucide-react";
+import { Link } from 'react-router-dom'; 
 
 const Navbar = ({ toggleSidebar }) => {
   return (
@@ -15,7 +16,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       <div className="actions">
-        <span className="login">Ingresar</span>
+        <Link to="/registro" className="login">Ingresar</Link>
         <button className="cart-button">
           <ShoppingCart size={16} />
           <span>Mi Carrito</span>

@@ -28,6 +28,7 @@ code {
   min-height: 100vh;
   background-image: url('/fondito.png');
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -35,6 +36,7 @@ code {
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .contact-page .background-overlay {
