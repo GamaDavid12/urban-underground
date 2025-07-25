@@ -16,19 +16,19 @@ export default function Footer() {
         <div className="footer-column">
           <h4>Categorías</h4>
           <ul>
-            <li>Ropa</li>
-            <li>Calzados</li>
-            <li>Accesorios</li>
-            <li>Edición Limitada</li>
+            <li><Link to="/contacto" className="footer-link">Ropa</Link></li>
+            <li><Link to="/calzados" className="footer-link">Calzados</Link></li>
+            <li><Link to="/accesorios" className="footer-link">Accesorios</Link></li>
+            <li><Link to="/edicionLimitada" className="footer-link">Edición Limitada</Link></li>
           </ul>
         </div>
 
         <div className="footer-column">
           <h4>Empresa</h4>
           <ul>
-            <li>Contacto</li>
-            <li>Soporte</li>
-            <li>Ubicación</li>
+            <li><Link to="/contacto" className="footer-link">Contacto</Link></li>
+            <li><Link to="/soporte" className="footer-link">Soporte</Link></li>
+            <li><Link to="/ubicacion" className="footer-link">Ubicación</Link></li>
           </ul>
         </div>
 

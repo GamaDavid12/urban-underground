@@ -51,6 +51,7 @@
 
 .login {
   color: #ffffff;
+  text-decoration: none;
   cursor: pointer;
   font-weight: 600;
   transition: color 0.2s ease;

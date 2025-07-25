@@ -30,6 +30,17 @@
   transform: scale(1.1);
 }
 
+.footer-column .footer-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-column .footer-link:hover {
+  color: #F8BD00;
+}
+
 .footer-column h4,
 .footer-subscribe h4 {
   font-weight: bold;

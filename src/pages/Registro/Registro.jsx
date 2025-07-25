@@ -57,7 +57,7 @@ const Registro = () => {
       </div>
 
       <p className={styles.signupLink}>
-        ¿Ya tienes una cuenta? <Link to="/" className={styles.signupLinkAnchor}>Iniciar sesión</Link>
+        ¿Ya tienes una cuenta? <Link to="/iniciar-sesion" className={styles.signupLinkAnchor}>Iniciar sesión</Link>
       </p>
 
       <div className={styles.termsLinks}>
