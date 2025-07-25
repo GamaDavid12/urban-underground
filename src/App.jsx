@@ -6,6 +6,8 @@ import MainLayout from './layout/MainLayout.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
+import CartSidebar from './components/CartSidebar/CartSidebar.jsx';
+import { CartProvider } from './context/CartContext.jsx';
 import './index.css';
 
 import appRoutes from './routes';
@@ -31,6 +33,8 @@ const MainAppContent = () => {
 
       {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
       {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
+
+      <CartSidebar /> 
 
       {isSidebarOpen && shouldShowFullLayout && (
         <div className="sidebar-overlay" onClick={toggleSidebar}></div>
@@ -62,7 +66,9 @@ function App() {
   return (
     <div className={styles.app}>
       <Router>
+        <CartProvider>
         <MainAppContent />
+        </CartProvider>
       </Router>
     </div>
   );
