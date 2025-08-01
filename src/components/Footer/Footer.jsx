@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="footer-column">
           <h4>Categorías</h4>
           <ul>
-            <li><Link to="/contacto" className="footer-link">Ropa</Link></li>
+            <li><Link to="/categoria/ropa" className="footer-link">Ropa</Link></li>
             <li><Link to="/calzados" className="footer-link">Calzados</Link></li>
             <li><Link to="/accesorios" className="footer-link">Accesorios</Link></li>
             <li><Link to="/edicionLimitada" className="footer-link">Edición Limitada</Link></li>

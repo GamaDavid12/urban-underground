@@ -12,7 +12,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
       <ul className={styles.sidebarMenu}>
         <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/remeras">REMERAS</Link>
+          <Link to="/categorias/ropa">REMERAS</Link>
         </li>
         <li className={styles.menuItem} onClick={toggleSidebar}>
           <Link to="/categorias/buzos-camperas">BUZOS / CAMPERAS</Link>
