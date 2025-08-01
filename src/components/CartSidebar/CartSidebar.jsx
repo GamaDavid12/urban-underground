@@ -1,8 +1,9 @@
-import React from 'react'; 
+import React from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './CartSidebar.module.css';
 import { FaTimes } from 'react-icons/fa';
 import { ShoppingCart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const CartSidebar = () => {
   const {
@@ -13,6 +14,14 @@ const CartSidebar = () => {
     updateQuantity,
     getCartTotal
   } = useCart();
+  
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate('/categoria/ropa');
+    toggleCartSidebar();
+  };
 
   const handleQuantityChange = (item, event) => {
     const newQuantity = parseInt(event.target.value, 10);
@@ -48,9 +57,9 @@ const CartSidebar = () => {
           {cartItems.length === 0 ? (
             <>
               <p className={styles.emptyCartMessage}>¡Tu carrito está vacío!</p>
-                <ShoppingCart className={styles.emptyCartIcon} size={100} color="#bfbdb9ff" />
+              <ShoppingCart className={styles.emptyCartIcon} size={100} color="#F8BD00" />
               <p className={styles.emptyCartPrompt}>Parece que todavía no agregaste ningún producto. ¡Explorá el catálogo y encontrá tu estilo!</p>
-              <button className={styles.catalogButton}>Volver al catálogo</button>
+              <button className={styles.catalogButton} onClick={handleGoBack}>Volver al catálogo</button>
             </>
           ) : (
             cartItems.map((item) => (
@@ -91,10 +100,10 @@ const CartSidebar = () => {
               <span>${getCartTotal().toFixed(2)}</span>
             </div>
             <div className={styles.shippingInfo}>
-                Envío gratuito durante 1 año por solo $14.00
-                <button className={styles.addToBagButton}>Añadir a la bolsa</button>
+              Envío gratuito durante 1 año por solo $14.00
             </div>
-            <button className={styles.catalogButton}>Volver al catálogo</button>
+
+            <button className={styles.catalogButton} onClick={handleGoBack}>Volver al catálogo</button>
             <button className={styles.checkoutButton}>Finalizar compra</button>
           </div>
         )}
