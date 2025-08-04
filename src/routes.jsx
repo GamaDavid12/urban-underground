@@ -4,6 +4,7 @@ import PasswordRecoveryForm from './pages/PasswordRecovery/PasswordRecoveryForm'
 import ContactPage from './pages/ContactPage/ContactPage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import ClothingCategoryPage from './pages/ClothingCategory/ClothingCategoryPage.jsx';
+import HoodiesCategoryPage from './pages/HoodiesCategory/HoodiesCategoryPage.jsx';
 
 const routes = [
   {
@@ -26,9 +27,13 @@ const routes = [
     path: '/recuperar',
     element: <PasswordRecoveryForm />,
   },
-  {
-    path: '/categoria/ropa',
+   {
+    path: '/categorias/remeras',
     element: <ClothingCategoryPage />,
+  },
+  {
+    path: '/categorias/buzos-camperas',
+    element: <HoodiesCategoryPage />,
   },
  // {
   //path: '*',
