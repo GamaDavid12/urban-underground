@@ -18,10 +18,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <Link to="/categorias/buzos-camperas">BUZOS / CAMPERAS</Link>
         </li>
         <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/zapatillas">ZAPATILLAS</Link>
+          <Link to="/categorias/zapatos">ZAPATOS</Link>
         </li>
         <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/gorras">GORRAS</Link>
+          <Link to="/categorias/accesorios">ACCESORIOS</Link>
         </li>
         <li className={styles.menuItem} onClick={toggleSidebar}>
           <Link to="/categorias/jeans">JEANS</Link>

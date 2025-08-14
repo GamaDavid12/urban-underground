@@ -5,7 +5,8 @@ import ContactPage from './pages/ContactPage/ContactPage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import ClothingCategoryPage from './pages/ClothingCategory/ClothingCategoryPage.jsx';
 import HoodiesCategoryPage from './pages/HoodiesCategory/HoodiesCategoryPage.jsx';
-
+import ShoesCategoryPage from './pages/ShoesCategory/ShoesCategoryPage.jsx';
+import AccessoriesCategoryPage from './pages/AccessoriesCategory/AccessoriesCategoryPage.jsx';
 const routes = [
   {
     path: '/',
@@ -34,6 +35,14 @@ const routes = [
   {
     path: '/categorias/buzos-camperas',
     element: <HoodiesCategoryPage />,
+  },
+    {
+    path: '/categorias/zapatos',
+    element: <ShoesCategoryPage />,
+  },
+    {
+    path: '/categorias/accesorios',
+    element: <AccessoriesCategoryPage />,
   },
  // {
   //path: '*',
