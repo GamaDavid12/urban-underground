@@ -1,0 +1,219 @@
+.container { 
+  max-width: 480px; 
+  font-family: system-ui, sans-serif; 
+  margin: 0 auto; 
+  padding: 1rem; 
+  color: #222; 
+} 
+
+.breadcrumb { 
+  display: flex; 
+  align-items: center; 
+  font-size: 0.85rem; 
+  color: #666; 
+  margin-bottom: 1.5rem; 
+} 
+
+.breadcrumbLink { 
+  background: none; 
+  border: none; 
+  color: #3765aa; 
+  cursor: pointer; 
+  font-weight: 600; 
+  text-decoration: underline; 
+  padding: 0; 
+} 
+
+.separator { 
+  margin: 0 0.5rem; 
+} 
+
+.breadcrumbCurrent { 
+  font-weight: 700; 
+  color: #111; 
+} 
+
+.breadcrumbNext { 
+  color: #aaa; 
+} 
+
+.form { 
+  display: flex; 
+  flex-direction: column; 
+} 
+
+.title { 
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  margin-bottom: 1rem; 
+  color: #111; 
+} 
+
+/* Estilo base para todos los inputs */
+.input, 
+.select { 
+  padding: 0.75rem 1rem; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  font-size: 1rem; 
+  margin-bottom: 1rem; 
+  width: 100%;
+  box-sizing: border-box; 
+  transition: border-color 0.3s ease; 
+} 
+
+.input:focus, 
+.select:focus { 
+  outline: none; 
+  border-color: #222; 
+  box-shadow: 0 0 6px rgba(34, 34, 34, 0.1); /* Ajuste para un shadow más suave */
+} 
+
+.checkboxLabel { 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  font-size: 0.9rem; 
+  margin-bottom: 1.5rem; 
+  color: #444; 
+  cursor: pointer; 
+} 
+
+/* Estilo para los grupos de inputs en una fila */
+.row { 
+  display: flex; 
+  gap: 1rem; /* Espacio entre los inputs */
+  margin-bottom: 1rem; 
+} 
+
+/* Estilo para inputs que ocupan la mitad del ancho */
+.inputHalf { 
+  width: 50%; 
+} 
+
+/* Estilo para inputs que ocupan un tercio del ancho */
+.inputThird { 
+  width: 33.33%; 
+} 
+
+.actions { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 2rem; 
+} 
+
+.btnPrimary { 
+  background-color: #F8BD00; 
+  color: #333; 
+  border: none; 
+  border-radius: 6px; 
+  padding: 0.85rem 1.5rem; 
+  font-weight: 600; 
+  font-size: 1rem; 
+  cursor: pointer; 
+  transition: background-color 0.2s ease; 
+} 
+
+.btnPrimary:hover { 
+  background-color: #c09a01; 
+} 
+
+.linkBack { 
+  font-size: 0.9rem; 
+  color: #3765aa; 
+  text-decoration: underline; 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  padding: 0; 
+} 
+
+.linkBack:hover { 
+  color: #1a3a7a; 
+} 
+
+.footerLinks { 
+  display: flex; 
+  gap: 1.5rem; 
+  justify-content: center; 
+  margin-top: 2rem; 
+  font-size: 0.8rem; 
+  color: #666; 
+} 
+
+.footerLinks a { 
+  color: #1a73e8; 
+  text-decoration: underline; 
+} 
+
+.footerLinks a:hover { 
+  text-decoration: underline; 
+}
+
+.inputSearchContainer {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.inputSearch {
+  padding-right: 2.5rem; /* Espacio para el icono */
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-85%);
+  color: #888;
+  pointer-events: none;
+}
+
+.sugerenciasList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: #fff;
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sugerenciasList li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.sugerenciasList li:hover {
+  background-color: #f0f0f0;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.inputGroupPrefix {
+  position: absolute;
+  left: 1rem;
+   top: 50%;
+  transform: translateY(-85%);
+  color: #666;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.inputGroup .input {
+  padding-left: 4.5rem; 
+}

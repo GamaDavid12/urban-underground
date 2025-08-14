@@ -21,7 +21,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       <div className="actions">
-        <Link to="/registro" className="login">Ingresar</Link>
+        <Link to="registro" className="login">Ingresar</Link>
         
 
         <button onClick={toggleCartSidebar} className="cart-button">

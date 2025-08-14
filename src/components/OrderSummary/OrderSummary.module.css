@@ -1,0 +1,140 @@
+.orderSummary {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+    max-width: 480px;
+    
+}
+
+.itemsList {
+    margin-bottom: 2rem;
+    
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+}
+
+.productInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.productImage {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.productName {
+    font-weight: 500;
+}
+
+.productVariant {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.productPrice {
+    font-weight: 500;
+    color: #555;
+}
+
+.summaryBlock {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.summaryBlock:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.discountInput {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    border: 1px solid #c9c9c9;
+    border-radius: 0;
+    font-size: 1rem;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.applyButton {
+    background-color: #000;
+    border: none;
+    border-radius: 0;
+    padding: 1rem 1.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.applyButton:hover {
+    background-color: #333;
+}
+
+.summaryLabel {
+    font-size: 1rem;
+    color: #555;
+}
+
+.summaryValue {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222;
+}
+
+.totalRow {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.totalLabel {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.totalValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.quantityBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #F8BD00;
+  color: #000;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}

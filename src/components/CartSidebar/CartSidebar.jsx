@@ -12,9 +12,10 @@ const CartSidebar = () => {
     toggleCartSidebar,
     removeFromCart,
     updateQuantity,
-    getCartTotal
+    getCartTotal,
+    premiumShipping,
+    setPremiumShipping
   } = useCart();
-  
 
   const navigate = useNavigate();
 
@@ -30,6 +31,11 @@ const CartSidebar = () => {
     }
   };
 
+  const handleCheckout = () => {
+    toggleCartSidebar();
+    navigate('/checkout');
+  };
+
   React.useEffect(() => {
     if (isCartSidebarOpen) {
       document.body.style.overflow = 'hidden';
@@ -43,7 +49,9 @@ const CartSidebar = () => {
 
   return (
     <>
-      {isCartSidebarOpen && <div className={styles.overlay} onClick={toggleCartSidebar}></div>}
+      {isCartSidebarOpen && (
+        <div className={styles.overlay} onClick={toggleCartSidebar}></div>
+      )}
 
       <div className={`${styles.cartSidebar} ${isCartSidebarOpen ? styles.open : ''}`}>
         <div className={styles.cartHeader}>
@@ -58,8 +66,12 @@ const CartSidebar = () => {
             <>
               <p className={styles.emptyCartMessage}>¡Tu carrito está vacío!</p>
               <ShoppingCart className={styles.emptyCartIcon} size={100} color="#F8BD00" />
-              <p className={styles.emptyCartPrompt}>Parece que todavía no agregaste ningún producto. ¡Explorá el catálogo y encontrá tu estilo!</p>
-              <button className={styles.catalogButton} onClick={handleGoBack}>Volver al catálogo</button>
+              <p className={styles.emptyCartPrompt}>
+                Parece que todavía no agregaste ningún producto. ¡Explorá el catálogo y encontrá tu estilo!
+              </p>
+              <button className={styles.catalogButton} onClick={handleGoBack}>
+                Volver al catálogo
+              </button>
             </>
           ) : (
             cartItems.map((item) => (
@@ -99,12 +111,25 @@ const CartSidebar = () => {
               <span>Subtotal:</span>
               <span>${getCartTotal().toFixed(2)}</span>
             </div>
+
+            {/* Opción envío premium */}
             <div className={styles.shippingInfo}>
-              Envío gratuito durante 1 año por solo $14.00
+              <label>
+                <input
+                  type="checkbox"
+                  checked={premiumShipping}
+                  onChange={(e) => setPremiumShipping(e.target.checked)}
+                />{' '}
+                Envío gratuito durante 1 año por solo $14.00
+              </label>
             </div>
 
-            <button className={styles.catalogButton} onClick={handleGoBack}>Volver al catálogo</button>
-            <button className={styles.checkoutButton}>Finalizar compra</button>
+            <button className={styles.catalogButton} onClick={handleGoBack}>
+              Volver al catálogo
+            </button>
+            <button className={styles.checkoutButton} onClick={handleCheckout}>
+              Finalizar compra
+            </button>
           </div>
         )}
       </div>
@@ -113,3 +138,4 @@ const CartSidebar = () => {
 };
 
 export default CartSidebar;
+

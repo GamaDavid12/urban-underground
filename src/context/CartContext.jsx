@@ -12,7 +12,14 @@ export const CartProvider = ({ children }) => {
       return [];
     }
   });
+
   const [isCartSidebarOpen, setIsCartSidebarOpen] = useState(false);
+
+  // Estado para envío premium
+  const [premiumShipping, setPremiumShipping] = useState(false);
+
+  // Estado para método de envío (standard o express)
+  const [shippingMethod, setShippingMethod] = useState('standard');
 
   useEffect(() => {
     try {
@@ -42,22 +49,21 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = (productId, newQuantity) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      ).filter(item => item.quantity > 0)
+      prevItems
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: newQuantity } : item
+        )
+        .filter(item => item.quantity > 0)
     );
   };
 
- 
   const clearCart = () => {
     setCartItems([]);
   };
 
-
   const toggleCartSidebar = () => {
     setIsCartSidebarOpen((prevState) => !prevState);
   };
-
 
   const getCartTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -74,6 +80,10 @@ export const CartProvider = ({ children }) => {
         isCartSidebarOpen,
         toggleCartSidebar,
         getCartTotal,
+        premiumShipping,
+        setPremiumShipping,
+        shippingMethod,
+        setShippingMethod
       }}
     >
       {children}
