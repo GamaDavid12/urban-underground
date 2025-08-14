@@ -1,5 +1,6 @@
 import styles from './ShoesCategoryPage.module.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import { GiRunningShoe } from 'react-icons/gi';
 
 const productsData = [
   {
@@ -75,7 +76,7 @@ const ShoesCategoryPage = () => {
     <div className={styles.shoesCategoryContainer}>
       <div className={styles.header}>
         <div className={styles.filtersSection}>
-          <h1 className={styles.categoryTitle}>ZAPATOS</h1>
+          <h1 className={styles.categoryTitle}>ZAPATOS<GiRunningShoe /></h1>
           <div className={styles.filterGroup}>
             <span className={styles.filterLabel}>FILTROS</span>
             <span className={styles.subCategory}>Zapatos y Zapatillas</span>
