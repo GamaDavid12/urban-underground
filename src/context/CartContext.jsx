@@ -15,11 +15,31 @@ export const CartProvider = ({ children }) => {
 
   const [isCartSidebarOpen, setIsCartSidebarOpen] = useState(false);
 
-  // Estado para envío premium
   const [premiumShipping, setPremiumShipping] = useState(false);
 
-  // Estado para método de envío (standard o express)
-  const [shippingMethod, setShippingMethod] = useState('standard');
+const [shippingMethod, setShippingMethod] = useState(null);
+
+
+  const [shippingCost, setShippingCost] = useState(0);
+
+useEffect(() => {
+  if (premiumShipping) {
+    setShippingMethod('premium');
+    setShippingCost(14);
+    } else {
+    setShippingMethod(null);
+    setShippingCost(0);
+  }
+  setDiscountCode('');
+  setDiscountValue(0);
+}, [premiumShipping]);
+
+
+  const [discountCode, setDiscountCode] = useState('');
+  const [discountValue, setDiscountValue] = useState(0);
+
+  const [contactInfo, setContactInfo] = useState({});
+  const [shippingAddress, setShippingAddress] = useState({});
 
   useEffect(() => {
     try {
@@ -83,7 +103,17 @@ export const CartProvider = ({ children }) => {
         premiumShipping,
         setPremiumShipping,
         shippingMethod,
-        setShippingMethod
+        setShippingMethod,
+        shippingCost,   
+        setShippingCost,    
+        discountCode,
+        setDiscountCode,
+        discountValue,
+        setDiscountValue,
+        contactInfo,
+        setContactInfo,
+        shippingAddress,
+        setShippingAddress
       }}
     >
       {children}

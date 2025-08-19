@@ -47,6 +47,8 @@ const CartSidebar = () => {
     };
   }, [isCartSidebarOpen]);
 
+  const totalWithShipping = getCartTotal() + (premiumShipping ? 14 : 0);
+
   return (
     <>
       {isCartSidebarOpen && (
@@ -108,8 +110,8 @@ const CartSidebar = () => {
         {cartItems.length > 0 && (
           <div className={styles.cartFooter}>
             <div className={styles.subtotal}>
-              <span>Subtotal:</span>
-              <span>${getCartTotal().toFixed(2)}</span>
+              <span>Total:</span>
+              <span>${totalWithShipping.toFixed(2)}</span>
             </div>
 
             {/* Opción envío premium */}
@@ -119,7 +121,7 @@ const CartSidebar = () => {
                   type="checkbox"
                   checked={premiumShipping}
                   onChange={(e) => setPremiumShipping(e.target.checked)}
-                />{' '}
+                /> 
                 Envío gratuito durante 1 año por solo $14.00
               </label>
             </div>

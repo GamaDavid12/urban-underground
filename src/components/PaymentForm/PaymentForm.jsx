@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from './PaymentForm.module.css';
 
-const PaymentForm = ({ onPrevStep }) => {
+
+const PaymentForm = ({ onPrevStep, contactData, shippingData, shippingMethod }) => {
     const [cardData, setCardData] = useState({
         cardNumber: '',
         cardDate: '',
@@ -30,56 +31,67 @@ const PaymentForm = ({ onPrevStep }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Pago procesado!');
+        alert('✅ Pago procesado con éxito');
     };
 
     return (
         <section className={styles.paymentDetails}>
-            {/* Breadcrumb */}
+
             <div className={styles.titleHeader}>
-                <a href="#" className={styles.titleLink} onClick={onPrevStep}>Carrito</a>
+                <a href="#" className={styles.titleLink} onClick={() => onPrevStep('cart')}>Carrito</a>
                 {' > '}
-                <a href="#" className={styles.titleLink} onClick={onPrevStep}>Información</a>
+                <a href="#" className={styles.titleLink} onClick={() => onPrevStep('information')}>Información</a>
                 {' > '}
-                <a href="#" className={styles.titleLink} onClick={onPrevStep}>Envío</a>
+                <a href="#" className={styles.titleLink} onClick={() => onPrevStep('shipping')}>Envío</a>
                 {' > '}
                 <span className={styles.titleCurrent}>Pago</span>
             </div>
 
-            {/* Información de contacto (después tengo que componentizar) */}
+
             <h2 className={styles.sectionTitle}>Contacto</h2>
             <div className={styles.summaryBlock}>
                 <div className={styles.infoRow}>
-                    <span className={styles.infoLabel}>Contacto</span>
-                    <span className={styles.infoValue}>tu_correo@ejemplo.com</span>
-                    <a href="#" className={styles.changeLink} onClick={onPrevStep}>Cambiar</a>
+                    <span className={styles.infoLabel}>Correo</span>
+                    <span className={styles.infoValue}>
+                        {contactData?.correo || 'correo@ejemplo.com'}
+                    </span>
+                    <a href="#" className={styles.changeLink} onClick={() => onPrevStep('information')}>Cambiar</a>
                 </div>
             </div>
 
-            {/* Información resumida del envio  (después tengo que componentizar) */}
             <h2 className={styles.sectionTitle}>Envío a</h2>
             <div className={styles.summaryBlock}>
                 <div className={styles.infoRow}>
-                    <span className={styles.infoValue}>Tu dirección completa</span>
-                    <a href="#" className={styles.changeLink} onClick={onPrevStep}>Cambiar</a>
+                  <span className={styles.infoValue}>
+                     {shippingData?.nombre
+                          ? `${shippingData.nombre} ${shippingData.apellido}, ${shippingData.direccion}${shippingData.apartamento ? `, ${shippingData.apartamento}` : ''}, ${shippingData.ciudad}, ${shippingData.estado}, ${shippingData.codigoPostal}, ${shippingData.pais} | Tel: ${shippingData.prefijoTelefono}${shippingData.telefono}`
+                         : 'Tu dirección completa'}
+                    </span>
+
+                    <a href="#" className={styles.changeLink} onClick={() => onPrevStep('information')}>Cambiar</a>
                 </div>
             </div>
 
-            {/* Info del Método de envio que seleccioné anteriormente */}
+            
             <h2 className={styles.sectionTitle}>Método de envío</h2>
             <div className={styles.summaryBlock}>
                 <div className={styles.infoRow}>
-                    <span className={styles.infoValue}>Envío estándar · $12.00</span>
-                    <a href="#" className={styles.changeLink} onClick={onPrevStep}>Cambiar</a>
+                    <span className={styles.infoValue}>
+                      {shippingMethod === 'standard' && 'Envío estándar · $12.00'}
+                      {shippingMethod === 'express' && 'Envío exprés · $25.00'}
+                      {shippingMethod === 'premium' && 'Envío Premium · $14.00'}
+                      {!shippingMethod && 'No seleccionado'}
+                    </span>
+                    <a href="#" className={styles.changeLink} onClick={() => onPrevStep('shipping')}>Cambiar</a>
                 </div>
             </div>
 
-            {/* Pago */}
+            
             <h2 className={styles.sectionTitle}>Pago</h2>
             <p className={styles.sectionDescription}>Todas las transacciones son seguras y están encriptadas.</p>
 
             <div className={styles.paymentOptions}>
-                {/* Tarjeta de crédito */}
+               
                 <div className={`${styles.paymentOption} ${paymentMethod === 'creditCard' ? styles.active : ''}`}>
                     <label className={styles.paymentMethodLabel}>
                         <input
@@ -92,7 +104,6 @@ const PaymentForm = ({ onPrevStep }) => {
                         <div className={styles.paymentMethodInfo}>
                             <span className={styles.paymentMethodName}>Tarjeta de crédito</span>
                             <div className={styles.cardLogos}>
-                                {/* Logos de las tarjetas Inline SVG */}
                                 <svg viewBox="0 0 50 20"><rect width="50" height="20" fill="#1a1f71"/><text x="25" y="14" fill="white" fontSize="10" textAnchor="middle">VISA</text></svg>
                                 <svg viewBox="0 0 50 20"><circle cx="15" cy="10" r="8" fill="#EB001B"/><circle cx="35" cy="10" r="8" fill="#F79E1B"/><circle cx="25" cy="10" r="8" fill="#FF5F00"/></svg>
                                 <svg viewBox="0 0 50 20"><rect width="50" height="20" fill="#2E77BC"/><text x="25" y="14" fill="white" fontSize="8" textAnchor="middle">AMEX</text></svg>
@@ -118,7 +129,7 @@ const PaymentForm = ({ onPrevStep }) => {
                     )}
                 </div>
 
-                {/* Opción de pagar con Pay */}
+               
                 <div className={`${styles.paymentOption} ${paymentMethod === 'shopPay' ? styles.active : ''}`}>
                     <label className={styles.paymentMethodLabel}>
                         <input
@@ -132,8 +143,7 @@ const PaymentForm = ({ onPrevStep }) => {
                     </label>
                 </div>
 
-                {/* 
-                {/* Opción de pagar con PayPal */}
+              
                 <div className={`${styles.paymentOption} ${paymentMethod === 'payPal' ? styles.active : ''}`}>
                     <label className={styles.paymentMethodLabel}>
                         <input
@@ -148,7 +158,7 @@ const PaymentForm = ({ onPrevStep }) => {
                 </div>
             </div>
 
-            {/* Confirmar la dirección de envío */}
+            
             <h2 className={styles.sectionTitle}>Dirección de facturación</h2>
             <p className={styles.sectionDescription}>Selecciona la dirección que coincida con tu tarjeta o método de pago.</p>
             <div className={styles.billingAddress}>
@@ -202,13 +212,15 @@ const PaymentForm = ({ onPrevStep }) => {
                 </div>
             </div>
 
-            {/* Confirmar la compra */}
+          
             <div className={styles.formActions}>
-                <a href="#" className={styles.linkButton} onClick={onPrevStep}>{'<'} Volver a Envío</a>
+                <a href="#" className={styles.linkButton} onClick={() => onPrevStep('shipping')}>
+                    {'<'} Volver a Envío
+                </a>
                 <button type="submit" className={styles.btnPrimary}>Pagar ahora</button>
             </div>
 
-            {/* Acá los links de los Términos */}
+           
             <div className={styles.termsLinks}>
                 <a href="#">Política de reembolso</a>
                 <a href="#">Política de privacidad</a>
@@ -219,3 +231,4 @@ const PaymentForm = ({ onPrevStep }) => {
 };
 
 export default PaymentForm;
+

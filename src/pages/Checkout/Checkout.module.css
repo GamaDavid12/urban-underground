@@ -58,14 +58,14 @@
         padding: 2rem 1rem;
         height: auto;
         border-right: none;
-        order: 2; /* Pone el formulario debajo del resumen en móviles */
+        order: 1; 
     }
     .summaryColumn {
         flex: none;
         width: 100%;
         padding: 2rem 1rem;
         height: auto;
-        order: 1; /* Pone el resumen arriba del formulario en móviles */
+        order: 2; 
     }
     .summarySticky {
         position: static;

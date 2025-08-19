@@ -16,14 +16,21 @@ const Checkout = () => {
 
     const [checkoutStep, setCheckoutStep] = useState('information');
 
-    
+
+    const [contactData, setContactData] = useState(null);
+    const [shippingData, setShippingData] = useState(null);
+
+   const { shippingAddress, contactInfo } = useCart();
+   const { setShippingMethod } = useCart();
+
+
+
     const orderData = useMemo(() => {
         const subtotal = cartItems.reduce(
             (acc, item) => acc + item.price * item.quantity,
             0
         );
 
-        
         let envio = 0;
         if (premiumShipping) {
             envio = 14.00;
@@ -33,13 +40,8 @@ const Checkout = () => {
             envio = 25.00;
         }
 
-        //impuestos: 10% del subto
         const impuestos = subtotal * 0.10;
-
-        // Total antes de descuento
         const totalSinDescuento = subtotal + envio + impuestos;
-
-        // Total con descuento aplicado
         const total = Math.max(totalSinDescuento - discountValue, 0);
 
         return {
@@ -51,10 +53,13 @@ const Checkout = () => {
         };
     }, [cartItems, premiumShipping, shippingMethod, discountValue]);
 
-    const handleNextStep = () => {
+    const handleNextStep = (data) => {
         if (checkoutStep === 'information') {
+            setContactData(data);
             setCheckoutStep('shipping');
         } else if (checkoutStep === 'shipping') {
+            setShippingData(data);
+            setShippingMethod(data.shippingMethod);
             setCheckoutStep('payment');
         }
     };
@@ -74,7 +79,16 @@ const Checkout = () => {
             case 'shipping':
                 return <ShippingForm onNextStep={handleNextStep} onPrevStep={handlePrevStep} />;
             case 'payment':
-                return <PaymentForm onPrevStep={handlePrevStep} order={orderData} />;
+                return (
+                   <PaymentForm
+                      onPrevStep={handlePrevStep}
+                     order={orderData}
+                     contactData={contactInfo}
+                      shippingData={shippingAddress}
+                      shippingMethod={shippingMethod}
+                   />
+
+                );
             default:
                 return <FormEnvios onNextStep={handleNextStep} />;
         }
