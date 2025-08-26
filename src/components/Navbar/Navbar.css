@@ -1,0 +1,139 @@
+.navbar {
+  background-color: #010000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-family: sans-serif;
+  height: 50px;
+  color: #010000;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.search-bar input {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #373434;
+  color: #ffffff;
+  width: 200px;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #ffffff;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.login:hover {
+  color: #F8BD00;
+}
+
+.cart-button {
+  background-color: #373434;
+  color: #ffffff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.cart-button:hover {
+  background-color: #010000;
+  color: #FFD700;
+}
+
+.cart-button svg {
+  font-size: 1.2rem;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 18px;
+  text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  .left-group {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+    order: 1;
+  }
+
+  .menu-icon {
+    display: flex;
+    margin-right: 12px;
+  }
+
+  .search-bar {
+    width: auto;
+    text-align: center;
+    order: unset;
+  }
+  .search-bar input {
+    width: 180px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: center;
+    order: 2;
+    margin-top: 8px;
+    gap: 10px;
+  }
+}

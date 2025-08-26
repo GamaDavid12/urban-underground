@@ -1,0 +1,241 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.cartSidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100vh;
+  background-color: #010000;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease-in-out;
+}
+
+.cartSidebar.open {
+  right: 0;
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #010000;
+  color: #F8BD00;
+  border-bottom: 1px solid #333;
+}
+
+.cartHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #F8BD00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #fff;
+}
+
+.cartItems {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  color: #fff;
+}
+
+.emptyCartMessage {
+  text-align: center;
+  padding: 50px 20px 0;
+  color: #fff;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.emptyCartPrompt {
+    text-align: center;
+    padding: 0 20px 30px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.emptyCartIcon {
+  display: block;
+  margin: 30px auto;
+}
+
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #fff;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.itemDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.itemName {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.itemPrice {
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.itemQuantityControl {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.itemQuantityControl button {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 3px;
+  color: #333;
+}
+
+.itemQuantityControl button:hover {
+  background-color: #ddd;
+}
+
+.quantityInput {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px 0;
+}
+
+.quantityInput::-webkit-outer-spin-button,
+.quantityInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.removeButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  align-self: flex-end;
+  transition: background-color 0.2s;
+}
+
+.removeButton:hover {
+  background-color: #c82333;
+}
+
+.cartFooter {
+  padding: 15px 20px;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #010000;
+}
+
+.shippingInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-size: 0.9rem;
+    color: #010000;
+    margin-bottom: 19px;
+}
+
+.catalogButton {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #010000;
+  color: #fff;
+  border: 2px solid #F8BD00;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.catalogButton:hover {
+  background-color: #010000;
+  color: #F8BD00;
+}
+
+
+.checkoutButton {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #F8BD00;
+  color: #010000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 1rem;
+}
+
+.checkoutButton:hover {
+  background-color: #e6a700;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 480px) {
+  .cartSidebar {
+    width: 100%;
+    right: -100%;
+  }
+}

@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, useLocation, useRoutes } from 'react-router-dom';
+import Background from './components/Background/Background.jsx';
+import styles from './App.module.css';
+import MainLayout from './layout/MainLayout.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import CartSidebar from './components/CartSidebar/CartSidebar.jsx';
+import { CartProvider } from './context/CartContext.jsx';
+import './index.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+import appRoutes from './routes';
+
+const MainAppContent = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const location = useLocation();
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const authPaths = ['/registro', '/iniciar-sesion', '/recuperar']; 
+  const shouldShowFullLayout = !authPaths.includes(location.pathname);
+
+  const shouldShowAuthBackground = authPaths.includes(location.pathname);
+
+  const element = useRoutes(appRoutes);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>OTRO CAMBIO RAMA PRUEBA</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {shouldShowAuthBackground && <Background />} 
+
+      {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
+      {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
+
+      <CartSidebar /> 
+
+      {isSidebarOpen && shouldShowFullLayout && (
+        <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+      )}
+
+      {shouldShowFullLayout ? (
+        <MainLayout>
+          {element}
+        </MainLayout>
+      ) : (
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          minHeight: '100vh', 
+          width: '100%' 
+        }}>
+          {element}
+        </div>
+      )}
+
+      {shouldShowFullLayout && <Footer />}
     </>
-  )
+  );
+};
+
+function App() {
+  return (
+    <div className={styles.app}>
+      <Router>
+        <CartProvider>
+        <MainAppContent />
+        </CartProvider>
+      </Router>
+    </div>
+  );
 }
 
-export default App
+export default App;
