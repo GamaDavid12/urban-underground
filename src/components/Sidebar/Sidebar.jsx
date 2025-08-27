@@ -1,33 +1,49 @@
 import { Link } from 'react-router-dom';
-import styles from './Sidebar.module.css';
 import { FaTimes } from 'react-icons/fa';
+import { categories } from '../../Mocks/categoriesMock.js';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
-    <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-      <div className={styles.sidebarHeader}>
-        <button className={styles.closeButton} onClick={toggleSidebar}>
-          <FaTimes />
-        </button>
+    <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-[999]"
+          onClick={toggleSidebar}
+        ></div>
+      )}
+
+      <div
+        className={`fixed top-0 left-0 w-[250px] h-full bg-black text-white shadow-lg transition-transform duration-300 ease-in-out z-[1000] flex flex-col transform ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:w-[250px] sm:w-[200px]`}
+      >
+        <div className="flex justify-end p-4 border-b border-gray-800">
+          <button
+            className="bg-transparent border-none text-white text-2xl cursor-pointer p-1 transition-colors duration-200 hover:text-yellow-400"
+            onClick={toggleSidebar}
+          >
+            <FaTimes />
+          </button>
+        </div>
+
+        <ul className="list-none p-0 m-0 flex-grow">
+          {categories.map((category) => (
+            <li
+              key={category.id}
+              className="px-5 py-4 text-lg font-semibold border-b border-gray-900 last:border-b-0 cursor-pointer"
+              onClick={toggleSidebar}
+            >
+              <Link
+                to={category.path}
+                className="text-white no-underline block transition-colors duration-200 hover:text-yellow-400"
+              >
+                {category.titulo}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className={styles.sidebarMenu}>
-        <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/remeras">REMERAS</Link>
-        </li>
-        <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/buzos-camperas">BUZOS / CAMPERAS</Link>
-        </li>
-        <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/zapatos">ZAPATOS</Link>
-        </li>
-        <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/accesorios">ACCESORIOS</Link>
-        </li>
-        <li className={styles.menuItem} onClick={toggleSidebar}>
-          <Link to="/categorias/jeans">JEANS</Link>
-        </li>
-      </ul>
-    </div>
+    </>
   );
 };
 
