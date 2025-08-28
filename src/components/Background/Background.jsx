@@ -1,7 +1,14 @@
-import styles from './Background.module.css';
+import React from "react";
 
-const Background = () => {
-  return <div className={styles.background}></div>;
+const Background = ({ backgroundImage, children }) => {
+  return (
+    <div
+      className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none" }}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Background;

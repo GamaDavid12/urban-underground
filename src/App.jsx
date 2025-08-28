@@ -12,6 +12,8 @@ import './index.css';
 
 import appRoutes from './routes';
 
+import authBackgroundImage from './assets/underground.jpg';
+
 const MainAppContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
@@ -22,39 +24,33 @@ const MainAppContent = () => {
 
   const authPaths = ['/registro', '/iniciar-sesion', '/recuperar']; 
   const shouldShowFullLayout = !authPaths.includes(location.pathname);
-
   const shouldShowAuthBackground = authPaths.includes(location.pathname);
 
   const element = useRoutes(appRoutes);
 
   return (
     <>
-      {shouldShowAuthBackground && <Background />} 
+      {}
+      {shouldShowAuthBackground && (
+        <Background backgroundImage={authBackgroundImage}>
+          {element}
+        </Background>
+      )}
 
+      {}
       {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
       {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
-
-      <CartSidebar /> 
+      <CartSidebar />
 
       {isSidebarOpen && shouldShowFullLayout && (
         <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       )}
 
-      {shouldShowFullLayout ? (
+      {}
+      {shouldShowFullLayout && (
         <MainLayout>
           {element}
         </MainLayout>
-      ) : (
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          minHeight: '100vh', 
-          width: '100%' 
-        }}>
-          {element}
-        </div>
       )}
 
       {shouldShowFullLayout && <Footer />}
@@ -67,7 +63,7 @@ function App() {
     <div className={styles.app}>
       <Router>
         <CartProvider>
-        <MainAppContent />
+          <MainAppContent />
         </CartProvider>
       </Router>
     </div>
