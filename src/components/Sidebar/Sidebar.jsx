@@ -12,10 +12,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         ></div>
       )}
 
-      <div
+     <div
         className={`fixed top-0 left-0 w-[250px] h-full bg-black text-white shadow-lg transition-transform duration-300 ease-in-out z-[1000] flex flex-col transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:w-[250px] sm:w-[200px]`}
+        }`}
       >
         <div className="flex justify-end p-4 border-b border-gray-800">
           <button

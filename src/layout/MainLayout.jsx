@@ -1,11 +1,10 @@
-import styles from './MainLayout.module.css';
-import NavigationButtons from '../components/NavigationButtons/NavigationButtons';
+import NavigationButtons from '../components/NavigationButtons/NavigationButtons.jsx';
 
 function MainLayout({ children }) {
   return (
-    <div className={styles.mainLayoutContainer}>
-      <main className={styles.mainContent}>
-        {children} 
+    <div className="relative flex flex-col min-h-screen">
+      <main className="flex-grow flex flex-col items-center justify-center w-full box-border">
+        {children}
       </main>
       <NavigationButtons />
     </div>
