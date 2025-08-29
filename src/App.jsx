@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, useLocation, useRoutes } from 'react-router-dom';
-import Background from './components/Background/Background.jsx';
 import styles from './App.module.css';
 import MainLayout from './layout/MainLayout.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
@@ -13,6 +12,7 @@ import './index.css';
 import appRoutes from './routes';
 
 import authBackgroundImage from './assets/underground.jpg';
+import Container from './components/Container/Container.jsx';
 
 const MainAppContent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -32,9 +32,9 @@ const MainAppContent = () => {
     <>
       {}
       {shouldShowAuthBackground && (
-        <Background backgroundImage={authBackgroundImage}>
+        <Container backgroundImage={authBackgroundImage}>
           {element}
-        </Background>
+        </Container>
       )}
 
       {}
