@@ -5,14 +5,7 @@ import { categories } from '../../Mocks/categoriesMock.js';
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <>
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-[999]"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-
-     <div
+      <div
         className={`fixed top-0 left-0 w-[250px] h-full bg-black text-white shadow-lg transition-transform duration-300 ease-in-out z-[1000] flex flex-col transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}

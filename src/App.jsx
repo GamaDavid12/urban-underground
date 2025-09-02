@@ -22,7 +22,6 @@ const MainAppContent = () => {
 
   const authPaths = ['/registro', '/iniciar-sesion', '/recuperar']; 
   const shouldShowFullLayout = !authPaths.includes(location.pathname);
-
   const shouldShowAuthBackground = authPaths.includes(location.pathname);
 
   const element = useRoutes(appRoutes);
@@ -30,15 +29,9 @@ const MainAppContent = () => {
   return (
     <>
       {shouldShowAuthBackground && <Background />} 
-
       {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
       {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
-
       <CartSidebar /> 
-
-      {isSidebarOpen && shouldShowFullLayout && (
-        <div className="sidebar-overlay" onClick={toggleSidebar}></div>
-      )}
 
       {shouldShowFullLayout ? (
         <MainLayout>
@@ -64,10 +57,10 @@ const MainAppContent = () => {
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} overflow-x-hidden`}>
       <Router>
         <CartProvider>
-        <MainAppContent />
+          <MainAppContent />
         </CartProvider>
       </Router>
     </div>
