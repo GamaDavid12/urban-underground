@@ -1,7 +1,8 @@
 
 export const allProductsData = {
-  accessories: {
+  accesorios: {
     title: 'ACCESORIOS',
+    subtitle: 'Gorras',
     products: [
       {
         id: 1,
@@ -115,8 +116,9 @@ export const allProductsData = {
       },
     ],
   },
-  clothing: {
+  remeras: {
     title: 'ROPA',
+    subtitle: 'Remeras',
     products: [
       {
         id: 12,
@@ -182,8 +184,9 @@ export const allProductsData = {
       },
     ],
   },
-  hoodies: {
+  buzosCamperas: {
     title: 'BUZOS / CAMPERAS',
+    subtitle: 'BUZOS / CAMPERAS',
     products: [
       {
         id: 18,
@@ -243,8 +246,9 @@ export const allProductsData = {
       },
     ],
   },
-  shoes: {
+  zapatos: {
     title: 'ZAPATOS',
+    subtitle: 'Zapatos y Zapatillas',
     products: [
       {
         id: 24,
@@ -311,6 +315,78 @@ export const allProductsData = {
         gender: 'Unisex',
         image: '/cheto.jpg',
         price: 30.00,
+      },
+    ],
+  },
+  jeans: {
+    title: 'JEANS',
+    subtitle: 'Jeans',
+    products: [
+      {
+        id: 30,
+        name: 'Oversize Worn',
+        description: 'Jeans de estilo urbano holgado con un acabado desgastado que les da un look vintage. El diseño cómodo es perfecto para el uso diario.',
+        style: 'Urbano / Oversize',
+        colorBase: 'Gris claro',
+        gender: 'Unisex',
+        talle: 'S, M, L, XL',
+        image: '/jeanscierre.jpg',
+        price: 100.00,
+      },
+      {
+        id: 31,
+        name: 'Straight Fit Classic',
+        description: 'Jeans de corte recto y clásico en un tono azul claro atemporal. Diseño minimalista y versátil, ideal para cualquier ocasión.',
+        style: 'Clásico / Casual',
+        colorBase: 'Azul claro',
+        gender: 'Unisex',
+        talle: 'S, M, L, XL',
+        image: '/jeansjiji.jpg',
+        price: 90.50,
+      },
+      {
+        id: 32,
+        name: 'Cargo Plaid',
+        description: 'Jeans holgados con estampado de cuadros en tonos oscuros. El estilo moderno y atrevido es ideal para un look alternativo y vanguardista.',
+        style: 'Streetwear / Alternativo',
+        talle: 'S, M, L, XL',
+        colorBase: 'Gris oscuro con estampado de cuadros',
+        gender: 'Unisex',
+        image: '/jeanslineasrojas.jpg',
+        price: 107.00,
+      },
+      {
+        id: 33,
+        name: 'Wide Leg Star',
+        description: 'Jeans de corte holgado con un llamativo estampado de estrellas en la pierna. Un estilo audaz y lleno de personalidad para destacar.',
+        style: 'Streetwear / Wide Leg',
+        talle: 'S, M, L, XL',
+        colorBase: 'Azul',
+        gender: 'Unisex',
+        image: '/jeansestrella.jpg',
+        price: 102.00,
+      },
+      {
+        id: 34,
+        name: 'Ripped Skinny',
+        description: 'Jeans ajustados con aberturas y rasgaduras que le dan un look desgastado y rebelde. El diseño es perfecto para combinar con un estilo rockero o casual.',
+        style: 'Grunge / Ajustado',
+        talle: 'S, M, L, XL',
+        colorBase: 'Negro',
+        gender: 'Unisex',
+        image: '/jeansroto.jpg',
+        price: 130.00,
+      },
+      {
+        id: 35,
+        name: 'Classic Straight',
+        description: 'Jeans de corte recto en un tono azul oscuro atemporal. Un diseño básico y esencial que se adapta a cualquier guardarropa.',
+        style: 'Clásico / Casual',
+        talle: 'S, M, L, XL',
+        colorBase: 'Azul oscuro',
+        gender: 'Unisex',
+        image: '/jeanclasico.jpg',
+        price: 70.00,
       },
     ],
   },
