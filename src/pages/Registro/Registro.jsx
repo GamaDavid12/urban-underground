@@ -3,8 +3,8 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import styles from './Registro.module.css';
 import AuthInput from '../../components/AuthInput/AuthInput';
-import AuthButton from '../../components/AuthButton/AuthButton';
 import SocialAuthButton from '../../components/SocialAuthButton/SocialAuthButton';
+import Button from '../../components/Button/Button';
 
 const Registro = () => {
   const handleSubmit = (e) => {
@@ -48,7 +48,7 @@ const Registro = () => {
           required
           className={styles.inputGroup}
         />
-        <AuthButton type="submit" className={styles.loginButton}>Registrarse</AuthButton>
+        <Button type="submit" variant='gradient' text={"Registrarse"} />
       </form>
 
       <div className={styles.socialLogin}>

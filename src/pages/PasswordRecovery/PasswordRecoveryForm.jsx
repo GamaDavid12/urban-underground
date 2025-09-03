@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import styles from "./PasswordRecovery.module.css";
 import AuthInput from '../../components/AuthInput/AuthInput';
-import AuthButton from '../../components/AuthButton/AuthButton';
+import Button from '../../components/Button/Button';
 
 const PasswordRecoveryForm = () => {
   const handleSubmit = (e) => {
@@ -22,9 +22,7 @@ const PasswordRecoveryForm = () => {
           required
           className={styles.inputGroup}
         />
-        <AuthButton type="submit" className={styles.loginButton}>
-          Restablecer contraseña
-        </AuthButton>
+        <Button variant='gradient' text={"Restablecer contraseña"} type="submit" />
       </form>
 
       <div className={styles.signupLink}>

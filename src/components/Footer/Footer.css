@@ -76,15 +76,6 @@
   font-weight: bold;
 }
 
-.subscribe-form button {
-  background-color: #222;
-  color: #FFFFFF;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 .footer-bottom {
   text-align: center;
   font-size: 0.9rem;
@@ -102,8 +93,7 @@
     flex-direction: column;
   }
 
-  .subscribe-form input,
-  .subscribe-form button {
+  .subscribe-form input {
     width: 100%;
     margin-top: 0.5rem;
   }

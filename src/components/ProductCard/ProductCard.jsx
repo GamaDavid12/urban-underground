@@ -1,5 +1,6 @@
 import styles from './ProductCard.module.css';
 import { useCart } from '../../context/CartContext';
+import Button from '../Button/Button';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -22,9 +23,8 @@ const ProductCard = ({ product }) => {
           <li><span className={styles.detailLabel}>Género:</span> {product.gender}</li>
           {product.size && <li><span className={styles.detailLabel}>Talle:</span> {product.size}</li>}
         </ul>
-        <button onClick={handleAddToCart} className={styles.addToCartButton}>
-          Agregar al Carrito
-        </button>
+
+        <Button onClick={handleAddToCart} text={"Agregar al Carrito"}/>
       </div>
     </div>
   );

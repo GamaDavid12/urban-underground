@@ -2,6 +2,7 @@ import "./Navbar.css";
 import { Menu, ShoppingCart } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import Button from "../Button/Button";
 
 const Navbar = ({ toggleSidebar }) => {
   const { toggleCartSidebar, cartItems } = useCart();
@@ -23,14 +24,11 @@ const Navbar = ({ toggleSidebar }) => {
       <div className="actions">
         <Link to="/registro" className="login">Ingresar</Link>
         
-
-        <button onClick={toggleCartSidebar} className="cart-button">
-          <ShoppingCart size={16} />
-          <span>Mi Carrito</span>
+        <Button className={"px-8"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
           {totalItemsInCart > 0 && (
-            <span className="cart-item-count">{totalItemsInCart}</span> 
+            <span className="absolute -top-1 right-2 bg-[#FFCA1E] text-black rounded-full px-2 py-1 font-bold text-center">{totalItemsInCart}</span> 
           )}
-        </button>
+        </Button>
       </div>
     </nav>
   );
