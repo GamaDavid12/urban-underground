@@ -19,7 +19,7 @@ const Button = ({
     pay: "bg-green-500 border-green-500",
     grey: "border-neutral-700 bg-neutral-700 text-white hover:bg-inherit hover:text-[#FFCA1E] hover:border-inherit",
     gradient:
-      "bg-linear-65 from-black to-[#FFCA1E] border-none transition-colors duration-[0.5s] hover:from-[#FFCA1E] hover:to-[#FFCA1E] hover:text-black",
+      "bg-linear-65 from-[#FFCA1E] to-black  border-none transition-colors duration-[0.5s] hover:from-[#FFCA1E] hover:to-[#FFCA1E] hover:text-black",
   };
 
   return (

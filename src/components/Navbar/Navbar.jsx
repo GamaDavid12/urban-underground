@@ -24,7 +24,7 @@ const Navbar = ({ toggleSidebar }) => {
       <div className="actions">
         <Link to="/registro" className="login">Ingresar</Link>
         
-        <Button className={"px-8"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
+        <Button className={"px-5 py-1"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
           {totalItemsInCart > 0 && (
             <span className="absolute -top-1 right-2 bg-[#FFCA1E] text-black rounded-full px-2 py-1 font-bold text-center">{totalItemsInCart}</span> 
           )}

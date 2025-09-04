@@ -63,7 +63,7 @@ function Contact() {
           ></textarea>
         </div>
 
-        <Button type="submit" text={"Enviar"} />
+        <Button type="submit" text={"Enviar"} variant="gradient"/>
       </form>
     </div>
   );
