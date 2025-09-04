@@ -1,6 +1,7 @@
 import './Footer.css';
 import { FaXTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 
 export default function Footer() {
   return (
@@ -28,7 +29,7 @@ export default function Footer() {
           <div className="subscribe-form">
             <input type="email" placeholder="Correo electrónico..." />
             <Link to="/registro">
-              <button>REGÍSTRATE</button>
+              <Button className={'rounded-l-none'} variant='grey' text={"Regístrate"} />
             </Link>
           </div>
         </div>

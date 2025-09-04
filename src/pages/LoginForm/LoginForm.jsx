@@ -3,8 +3,8 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import styles from './LoginForm.module.css';
 import AuthInput from '../../components/AuthInput/AuthInput';
-import AuthButton from '../../components/AuthButton/AuthButton';
 import SocialAuthButton from '../../components/SocialAuthButton/SocialAuthButton';
+import Button from '../../components/Button/Button';
 
 const LoginForm = () => {
   const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ const LoginForm = () => {
           <input type="checkbox" id="rememberMe" name="rememberMe" className={styles.rememberMeCheckbox} />
           <label htmlFor="rememberMe">Recuérdame</label>
         </div>
-        <AuthButton type="submit" className={styles.loginButton}>Iniciar Sesión</AuthButton>
+        <Button variant='gradient' text="Iniciar Sesión" type="submit"/>
       </form>
 
       <p className={styles.forgotPassword}>

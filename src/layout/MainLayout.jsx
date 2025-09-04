@@ -1,5 +1,4 @@
 import styles from './MainLayout.module.css';
-import NavigationButtons from '../components/NavigationButtons/NavigationButtons';
 
 function MainLayout({ children }) {
   return (
@@ -7,7 +6,6 @@ function MainLayout({ children }) {
       <main className={styles.mainContent}>
         {children} 
       </main>
-      <NavigationButtons />
     </div>
   );
 }
