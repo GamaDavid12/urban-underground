@@ -1,9 +1,10 @@
 import React from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './CartSidebar.module.css';
-import { FaTimes } from 'react-icons/fa';
 import { ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
+import CloseButton from '../Button/CloseButton';
 
 const CartSidebar = () => {
   const {
@@ -48,9 +49,7 @@ const CartSidebar = () => {
       <div className={`${styles.cartSidebar} ${isCartSidebarOpen ? styles.open : ''}`}>
         <div className={styles.cartHeader}>
           <h2>Mi Carrito</h2>
-          <button onClick={toggleCartSidebar} className={styles.closeButton}>
-            <FaTimes />
-          </button>
+          <CloseButton onClick={toggleCartSidebar} />
         </div>
 
         <div className={styles.cartItems}>
@@ -59,10 +58,12 @@ const CartSidebar = () => {
               <p className={styles.emptyCartMessage}>¡Tu carrito está vacío!</p>
               <ShoppingCart className={styles.emptyCartIcon} size={100} color="#F8BD00" />
               <p className={styles.emptyCartPrompt}>Parece que todavía no agregaste ningún producto. ¡Explorá el catálogo y encontrá tu estilo!</p>
-              <button className={styles.catalogButton} onClick={handleGoBack}>Volver al catálogo</button>
+
+              <Button text={"Volver al catálogo"} variant='outlined' onClick={handleGoBack}/>
             </>
           ) : (
             cartItems.map((item) => (
+              // TODO: Componentizar esto a "CartItem"
               <div key={item.id} className={styles.cartItem}>
                 <img src={item.image} alt={item.name} className={styles.itemImage} />
                 <div className={styles.itemDetails}>

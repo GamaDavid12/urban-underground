@@ -1,38 +1,98 @@
-import Hotspot from '../../components/Hotspot/Hotspot.jsx';
+import Hotspot from "../../components/Hotspot/Hotspot.jsx";
 
 const HomePage = () => {
   const products = [
-    { id: 'prod1', name: 'Zapatillas Urbanas', description: 'Las más cómodas para tu día a día.' },
-    { id: 'prod2', name: 'Remera Gráfica Edición Limitada', description: 'Diseño exclusivo para ti.' },
-    { id: 'prod3', name: 'Buzo Con Capucha8 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod4', name: 'Buzo Con Capucha7 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod5', name: 'Buzo Con Capucha6 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod6', name: 'Buzo Con Capucha5 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod7', name: 'Buzo Con Capucha4 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod8', name: 'Buzo Con Capucha3 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod9', name: 'Buzo Con Capucha2 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod10', name: 'Buzo Con Capucha1 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod11', name: 'Buzo Con Capucha9 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod12', name: 'Buzo Con Capucha10 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod13', name: 'Buzo Con Capucha11 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod14', name: 'Buzo Con Capucha12 Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod15', name: 'Buzo Con Capucha13 Minimalista', description: 'Calidez y estilo.' },
+    {
+      id: "prod1",
+      name: "Zapatillas Urbanas",
+      description: "Las más cómodas para tu día a día.",
+    },
+    {
+      id: "prod2",
+      name: "Remera Gráfica Edición Limitada",
+      description: "Diseño exclusivo para ti.",
+    },
+    {
+      id: "prod3",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod4",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod5",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod6",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod7",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod8",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod9",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod10",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod11",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod12",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod13",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod14",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod15",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
   ];
 
   const handleHotspotClick = (product) => {
-    console.log('Hotspot clicado para el producto:', product);
+    console.log("Hotspot clicado para el producto:", product);
     alert(`Clic en: ${product.name}\n${product.description}`);
   };
 
   return (
-       <div className="relative w-screen h-screen overflow-hidden"> 
-       <img src="/HomePage.png" alt="Urban Underground Home" className="absolute top-0 left-0 w-screen h-screen object-cover z-0" />
-       <Hotspot 
-         top={51} 
-         left={24} 
-         product={products[0]} 
-         onClick={handleHotspotClick} 
-       /> 
+    <div className="relative w-screen h-screen overflow-hidden">
+      <img src="/HomePage.png" alt="Urban Underground Home" className="absolute top-0 left-0 w-screen h-screen object-cover z-0" />
+      <Hotspot
+        top={51}
+        left={24}
+        product={products[0]}
+        onClick={handleHotspotClick}
+      />
       <Hotspot
         top={97}
         left={71}

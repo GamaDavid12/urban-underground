@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
 import { categories } from '../../Mocks/categoriesMock.js';
+import CloseButton from "../Button/CloseButton";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
@@ -11,12 +11,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         }`}
       >
         <div className="flex justify-end p-4 border-b border-gray-800">
-          <button
-            className="bg-transparent border-none text-white text-2xl cursor-pointer p-1 transition-colors duration-200 hover:text-yellow-400"
-            onClick={toggleSidebar}
-          >
-            <FaTimes />
-          </button>
+        <CloseButton onClick={toggleSidebar} />
         </div>
 
         <ul className="list-none p-0 m-0 flex-grow">
