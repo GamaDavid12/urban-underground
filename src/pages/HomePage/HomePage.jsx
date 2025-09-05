@@ -1,33 +1,99 @@
-import Hotspot from '../../components/Hotspot/Hotspot.jsx';
-import styles from './HomePage.module.css';
+import Button from "../../components/Button/Button.jsx";
+import Hotspot from "../../components/Hotspot/Hotspot.jsx";
+import styles from "./HomePage.module.css";
+import { FaTimes } from "react-icons/fa";
 
 const HomePage = () => {
   const products = [
-    { id: 'prod1', name: 'Zapatillas Urbanas', description: 'Las más cómodas para tu día a día.' },
-    { id: 'prod2', name: 'Remera Gráfica Edición Limitada', description: 'Diseño exclusivo para ti.' },
-    { id: 'prod3', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod4', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod5', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod6', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod7', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod8', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod9', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod10', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod11', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod12', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod13', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod14', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
-    { id: 'prod15', name: 'Buzo Con Capucha Minimalista', description: 'Calidez y estilo.' },
+    {
+      id: "prod1",
+      name: "Zapatillas Urbanas",
+      description: "Las más cómodas para tu día a día.",
+    },
+    {
+      id: "prod2",
+      name: "Remera Gráfica Edición Limitada",
+      description: "Diseño exclusivo para ti.",
+    },
+    {
+      id: "prod3",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod4",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod5",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod6",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod7",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod8",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod9",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod10",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod11",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod12",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod13",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod14",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
+    {
+      id: "prod15",
+      name: "Buzo Con Capucha Minimalista",
+      description: "Calidez y estilo.",
+    },
   ];
 
   const handleHotspotClick = (product) => {
-    console.log('Hotspot clicado para el producto:', product);
+    console.log("Hotspot clicado para el producto:", product);
     alert(`Clic en: ${product.name}\n${product.description}`);
   };
 
   return (
     <div className={styles.homePageContainer}>
-      <img src="/HomePage.png" alt="Urban Underground Home" className={styles.homeImage} />
+      <img
+        src="/HomePage.png"
+        alt="Urban Underground Home"
+        className={styles.homeImage}
+      />
 
       <Hotspot
         top={51}

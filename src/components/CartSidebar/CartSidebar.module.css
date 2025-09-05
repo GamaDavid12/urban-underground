@@ -42,19 +42,6 @@
   font-size: 1.5rem;
 }
 
-.closeButton {
-  background: none;
-  border: none;
-  color: #F8BD00;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.closeButton:hover {
-  color: #fff;
-}
-
 .cartItems {
   flex-grow: 1;
   padding: 20px;

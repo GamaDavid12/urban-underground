@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import AuthInput from '../../components/AuthInput/AuthInput.jsx';
-import AuthButton from '../../components/AuthButton/AuthButton.jsx';
+import React, { useState } from "react";
+import AuthInput from "../../components/AuthInput/AuthInput.jsx";
+import Button from "../Button/Button.jsx";
 
 function Contact() {
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
-  const [email, setEmail] = useState('');
-  const [mensaje, setMensaje] = useState('');
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulario enviado:', { nombre, apellido, email, mensaje });
   };
 
   return (
@@ -64,12 +63,7 @@ function Contact() {
           ></textarea>
         </div>
 
-        <AuthButton
-          type="submit"
-          className="submit-button"
-        >
-          Enviar
-        </AuthButton>
+        <Button type="submit" text={"Enviar"} variant="gradient"/>
       </form>
     </div>
   );
