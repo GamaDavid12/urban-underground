@@ -30,14 +30,12 @@ const MainAppContent = () => {
 
   return (
     <>
-      {}
       {shouldShowAuthBackground && (
         <Container backgroundImage={authBackgroundImage}>
           {element}
         </Container>
       )}
 
-      {}
       {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
       {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
       <CartSidebar />
@@ -46,7 +44,6 @@ const MainAppContent = () => {
         <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       )}
 
-      {}
       {shouldShowFullLayout && (
         <MainLayout>
           {element}
