@@ -3,7 +3,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import styles from './LoginForm.module.css';
 import AuthInput from '../../components/AuthInput/AuthInput';
-import SocialAuthButton from '../../components/SocialAuthButton/SocialAuthButton';
+import SocialMediaButton from '../../components/SocialMediaButton/SocialMediaButton';
 import Button from '../../components/Button/Button';
 
 const LoginForm = () => {
@@ -44,8 +44,8 @@ const LoginForm = () => {
       </p>
 
       <div className={styles.socialLogin}>
-        <SocialAuthButton icon={FcGoogle} onClick={() => console.log('Google login')} className={styles.socialIcon} />
-        <SocialAuthButton icon={FaFacebookF} onClick={() => console.log('Facebook login')} className={styles.socialIcon} />
+        <SocialMediaButton icon={FcGoogle} onClick={() => console.log('Google login')} className={styles.socialIcon} />
+        <SocialMediaButton icon={FaFacebookF} onClick={() => console.log('Facebook login')} className={styles.socialIcon} />
       </div>
 
       <p className={styles.signupLink}>
