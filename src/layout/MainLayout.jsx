@@ -1,4 +1,3 @@
-import styles from './MainLayout.module.css';
 
 function MainLayout({ children }) {
   return (

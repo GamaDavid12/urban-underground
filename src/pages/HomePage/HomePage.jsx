@@ -1,4 +1,4 @@
-import Button from "../../components/Button/Button.jsx";
+
 import Hotspot from "../../components/Hotspot/Hotspot.jsx";
 
 const HomePage = () => {

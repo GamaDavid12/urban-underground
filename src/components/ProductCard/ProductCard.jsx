@@ -1,6 +1,5 @@
 import { useCart } from '../../context/CartContext';
 import Button from '../Button/Button';
-import CategoryPage from "../../pages/Category/CategoryPage.jsx";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
