@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-gray-900 text-white rounded-lg overflow-hidden shadow-lg flex flex-col">
+    <div className="bg-neutral-900 text-white rounded-lg overflow-hidden shadow-lg flex flex-col">
       <div className="relative w-full aspect-square">
         <img
           src={product.image}
@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-bold mb-1 text-yellow-400">"{product.name}"</h3>
-        <p className="text-sm mb-4 text-gray-300">{product.description}</p>
+        <p className="text-sm mb-4 text-gray-300 line-clamp-3">{product.description}</p>
         <ul className="text-xs text-gray-400 space-y-1 mb-4">
           <li><span className="font-semibold text-yellow-400">Estilo:</span> {product.style}</li>
           <li><span className="font-semibold text-yellow-400">Color base:</span> {product.colorBase}</li>
@@ -27,6 +27,7 @@ const ProductCard = ({ product }) => {
           {product.size && <li><span className="font-semibold text-yellow-400">Talle:</span> {product.size}</li>}
         </ul>
 
+        <div className="mt-auto"></div>
         <Button onClick={handleAddToCart} text={"Agregar al Carrito"}/>
       </div>
     </div>
