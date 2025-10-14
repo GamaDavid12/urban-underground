@@ -1,0 +1,17 @@
+export const hotspotPositions = [
+    { id: 'spot1', productId: 'prod1', top: 51, left: 24, name: 'Zapatillas Urbanas' },
+    { id: 'spot2', productId: 'prod2', top: 97, left: 71, name: 'Remera Gráfica Edición Limitada' },
+    { id: 'spot3', productId: 'prod3', top: 15, left: 40, name: 'Buzo Con Capucha8 Minimalista' },
+    { id: 'prod4', name: 'Buzo Con Capucha7 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod5', name: 'Buzo Con Capucha6 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod6', name: 'Buzo Con Capucha5 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod7', name: 'Buzo Con Capucha4 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod8', name: 'Buzo Con Capucha3 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod9', name: 'Buzo Con Capucha2 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod10', name: 'Buzo Con Capucha1 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod11', name: 'Buzo Con Capucha9 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod12', name: 'Buzo Con Capucha10 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod13', name: 'Buzo Con Capucha11 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod14', name: 'Buzo Con Capucha12 Minimalista', description: 'Calidez y estilo.' },
+    { id: 'prod15', name: 'Buzo Con Capucha13 Minimalista', description: 'Calidez y estilo.' },
+    ];

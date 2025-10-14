@@ -1,3 +1,21 @@
+@keyframes heartbeat {
+  0% {
+    /* Estado inicial: 100% del tamaño normal */
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    /* Punto medio: se agranda un 10% y el brillo de la sombra aumenta */
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.7); 
+  }
+  100% {
+    /* Estado final: vuelve al tamaño inicial */
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
 .hotspot {
   position: absolute;
   width: 30px;
@@ -13,12 +31,13 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  animation: heartbeat 1.5s infinite ease-in-out; 
 }
 
 .hotspot:hover {
   background-color: rgba(255, 255, 255, 0.9);
-  transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }
 
 .hotspot:active {

@@ -16,6 +16,10 @@ const Navbar = ({ toggleSidebar }) => {
           <Menu size={24} color="#ffffff" />
         </div>
 
+        <Link to="/" className="navbar-logo">
+          Urban Underground
+        </Link>
+
         <div className="search-bar">
           <input type="text" placeholder="Buscar..." />
         </div>
