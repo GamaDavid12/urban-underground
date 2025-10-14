@@ -185,7 +185,7 @@ export const allProductsData = {
     ],
   },
   buzosCamperas: {
-    title: 'BUZOS / CAMPERAS',
+    title: 'ROPA',
     subtitle: 'BUZOS / CAMPERAS',
     products: [
       {
@@ -248,7 +248,7 @@ export const allProductsData = {
   },
   zapatos: {
     title: 'ZAPATOS',
-    subtitle: 'Zapatos y Zapatillas',
+    subtitle: 'ZAPATOS / ZAPATILLAS',
     products: [
       {
         id: 24,
@@ -319,7 +319,7 @@ export const allProductsData = {
     ],
   },
   jeans: {
-    title: 'JEANS',
+    title: 'ROPA',
     subtitle: 'Jeans',
     products: [
       {
