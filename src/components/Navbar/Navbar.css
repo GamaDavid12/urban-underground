@@ -47,9 +47,6 @@ font-size: 24px;
 flex-shrink: 0;
 }
 
-.search-bar {
-order: -1;
-}
 
 .search-bar input {
 padding: 6px 12px;
