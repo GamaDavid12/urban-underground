@@ -1,74 +1,51 @@
 import React, { useState } from 'react';
-import AuthInput from '../../../components/AuthInput/AuthInput.jsx'; 
-import Button from '../../../components/Button/Button.jsx'; 
+import Button from "../../../components/Button/Button.jsx";
 
 const FormCategory = ({ onCancel, onSuccess }) => {
-    const [title, setTitle] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [categoryName, setCategoryName] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        if (!title) {
-            setError("Debes ingresar un nombre para la categoría.");
-            setLoading(false);
-            return;
-        }
-        
-        console.log("Creando categoría con los datos:", { title }); 
-        
-        setTimeout(() => {
-            setLoading(false);
-            if (Math.random() > 0.1) {
-                setTitle("");
-                onSuccess();
-            } else {
-                setError("Error de red o el nombre ya existe.");
-            }
-        }, 1500);
-    };
+    console.log("Datos enviados:", categoryName); 
 
-    return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            
-            <AuthInput
-                id="category-title"
-                label="Nombre"
-                type="text"
-                name="title"
-                placeholder="Nombre de la Categoría"
-                required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="mb-0"
-            />
+    onSuccess(); 
+  };
 
+  return (
+    <form onSubmit={handleSubmit}>
 
-            {loading && <p className="text-yellow-400 text-center">Guardando...</p>}
-            {error && <p className="text-red-500 text-center font-semibold">{error}</p>}
-            
-            <div className="flex justify-end gap-3 mt-4">
-                <Button 
-                    type="button" 
-                    text="Cancel"
-                    variant="grey"
-                    onClick={onCancel}
-                    className="!w-auto px-6 py-2"
-                    disabled={loading}
-                />
-                <Button 
-                    type="submit" 
-                    text={loading ? "Guardando..." : "Guardar"} 
-                    variant="contained"
-                    className="!w-auto px-6 py-2"
-                    disabled={loading}
-                />
-            </div>
-        </form>
-    );
+      <div className="mb-6">
+        <label htmlFor="categoryName" className="block text-sm font-medium text-gray-400 mb-2">
+          Nombre
+        </label>
+        <input
+          id="categoryName"
+          type="text"
+          value={categoryName}
+          onChange={(e) => setCategoryName(e.target.value)}
+          required
+          className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-[#FFCA1E] focus:border-[#FFCA1E]"
+        />
+      </div>
+
+      <div className="flex justify-end gap-3 mt-8">
+        <Button
+          type="button"
+          text="Cancel"
+          variant="cancel"
+          onClick={onCancel}
+          className="!w-auto px-6"
+        />
+        <Button
+          type="submit"
+          text="Guardar"
+          variant="pay"
+          className="!w-auto px-6"
+        />
+      </div>
+    </form>
+  );
 };
 
 export default FormCategory;

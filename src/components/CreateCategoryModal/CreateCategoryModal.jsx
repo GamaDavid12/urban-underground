@@ -1,13 +1,15 @@
-import Button from '../../../components/Button/Button.jsx'; 
+import React, { useState } from "react";
+import Button from "../Button/Button";
 
 const CreateCategoryModal = ({ isOpen, onClose, children }) => {
   if (!isOpen) {
     return null;
   }
 
-  return (
+return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+      // FONDO OSCURO: bg-opacity-90 (ya aplicado)
+      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" 
       onClick={onClose}
     >
       <div 
@@ -15,17 +17,19 @@ const CreateCategoryModal = ({ isOpen, onClose, children }) => {
         onClick={e => e.stopPropagation()}
       >
         
+        {/* BOTÓN CERRAR (Posición fija: top-4 right-4) */}
         <div className="absolute top-4 right-4">
-            <Button
-                type="button"
-                text="Cerrar"
-                variant="cancel"
-                onClick={onClose} 
-                className="!w-auto px-3 py-1 text-sm rounded-full" 
-            />
+          <Button
+            type="button"
+            text="Cerrar"
+            variant="cancel"
+            onClick={onClose} 
+            className="!w-auto px-3 py-1 text-sm rounded-full" 
+          />
         </div>
 
-        <h2 className="text-xl font-bold mb-6 text-white text-center uppercase tracking-wider mt-2">
+        {/* ✅ AJUSTE CLAVE: Usamos mt-8 (margin-top: 2rem) para crear espacio */}
+        <h2 className="text-xl font-bold mb-6 text-white text-center uppercase tracking-wider mt-8">
           CREAR CATEGORIA
         </h2>
         

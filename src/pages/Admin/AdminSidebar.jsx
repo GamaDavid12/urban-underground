@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { adminLinks } from "../../Mocks/adminDataMock";
 
 const AdminSidebar = () => {
   return (
-    <div className="w-60 h-full bg-gray-950 text-white shadow-xl flex flex-col flex-shrink-0">
+    <div className="w-60 h-full bg-[#010000] text-white shadow-xl flex flex-col flex-shrink-0">
       
       <div className="p-5 border-b border-gray-800">
         <h2 className="text-xl font-bold text-yellow-400">Admin Panel</h2>
