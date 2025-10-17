@@ -1,4 +1,6 @@
-import { Link } from "react-router";
+// src/pages/Admin/AdminSidebar.jsx
+
+import { Link } from "react-router-dom"; // Corregido a react-router-dom
 import { adminLinks } from "../../Mocks/adminDataMock";
 
 const AdminSidebar = () => {
@@ -9,22 +11,24 @@ const AdminSidebar = () => {
         <h2 className="text-xl font-bold text-yellow-400">Admin Panel</h2>
       </div>
 
-      <ul className="list-none p-0 m-0 flex-grow overflow-y-auto">
-        {adminLinks.map((link) => (
-          <li
-            key={link.id}
-            className="px-5 py-3 text-lg font-medium border-b border-gray-900 cursor-pointer transition duration-200 hover:bg-gray-800"
-          >
-            <Link
-              to={link.path}
-              className="text-white no-underline flex items-center gap-3"
+      <div className="flex-grow overflow-y-auto">
+        <ul className="list-none p-0 m-0"> 
+          {adminLinks.map((link) => (
+            <li
+              key={link.id}
+              className="px-5 py-3 text-lg font-medium border-b border-gray-900 cursor-pointer transition duration-200 hover:bg-gray-800"
             >
-              <span className="text-xl">{link.icon}</span>
-              {link.titulo}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                to={link.path}
+                className="text-white no-underline flex items-center gap-3"
+              >
+                <span className="text-xl">{link.icon}</span>
+                {link.titulo}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
