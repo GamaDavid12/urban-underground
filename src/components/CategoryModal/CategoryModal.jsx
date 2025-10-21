@@ -8,11 +8,11 @@ const CategoryModal = ({ isOpen, onClose, children, title = "OPERACIÓN CATEGORI
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" 
+      className="fixed inset-0 backdrop-blur-md bg-opacity-90 z-50 flex items-center justify-center p-4" 
       onClick={onClose}
     >
       <div 
-        className="bg-gray-900 border border-gray-700 w-full max-w-md p-6 sm:p-8 rounded-xl relative transform transition-all duration-300 scale-100"
+      className="bg-gray-900 border border-gray-700 w-full max-w-xs p-6 sm:p-8 rounded-xl relative transform transition-all duration-300 scale-100"
         onClick={e => e.stopPropagation()}
       >
         
