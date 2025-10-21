@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CreateCategoryModal from "../../../components/CreateCategoryModal/CreateCategoryModal.jsx";
+import CategoryModal from "../../../components/CategoryModal/CategoryModal.jsx";
 import FormCategory from "./FormCategory.jsx";
 import HeaderTitle from "../../../components/HeaderTitle/HeaderTitle.jsx";
 import Button from '../../../components/Button/Button.jsx';
@@ -35,7 +35,7 @@ const CategoryManagementPage = () => {
                 <CategoryTable />
             </div>
 
-            <CreateCategoryModal 
+            <CategoryModal 
                 isOpen={isModalOpen}
                 onClose={handleCancel} 
             >
@@ -43,7 +43,7 @@ const CategoryManagementPage = () => {
                     onCancel={handleCancel}
                     onSuccess={handleSuccess}
                 />
-            </CreateCategoryModal>
+            </CategoryModal>
         </div>
     );
 };

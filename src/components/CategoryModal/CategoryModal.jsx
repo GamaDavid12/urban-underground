@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 
-const CreateCategoryModal = ({ isOpen, onClose, children }) => {
+const CategoryModal = ({ isOpen, onClose, children, title = "OPERACIÓN CATEGORIA" }) => {
   if (!isOpen) {
     return null;
   }
 
-return (
+  return (
     <div 
-      // FONDO OSCURO: bg-opacity-90 (ya aplicado)
       className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" 
       onClick={onClose}
     >
@@ -17,7 +16,6 @@ return (
         onClick={e => e.stopPropagation()}
       >
         
-        {/* BOTÓN CERRAR (Posición fija: top-4 right-4) */}
         <div className="absolute top-4 right-4">
           <Button
             type="button"
@@ -28,9 +26,9 @@ return (
           />
         </div>
 
-        {/* ✅ AJUSTE CLAVE: Usamos mt-8 (margin-top: 2rem) para crear espacio */}
+
         <h2 className="text-xl font-bold mb-6 text-white text-center uppercase tracking-wider mt-8">
-          CREAR CATEGORIA
+          {title}
         </h2>
         
         <div className="text-white">
@@ -42,4 +40,4 @@ return (
   );
 };
 
-export default CreateCategoryModal;
+export default CategoryModal;
