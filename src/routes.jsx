@@ -7,6 +7,8 @@ import CategoryPage from './pages/Category/CategoryPage.jsx';
 import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
 import AdminHomePage from './pages/Admin/AdminHomePage.jsx'; 
 import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryManagementPage.jsx';
+import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage";
+
 
 const routes = [
   {
@@ -46,6 +48,10 @@ const routes = [
                 path: 'gestionar-categorias',
                 element: <CategoryManagementPage />,
             },
+            {
+                path: 'products',
+                element: <ProductManagementPage />,
+            }
         ],
     },
     
