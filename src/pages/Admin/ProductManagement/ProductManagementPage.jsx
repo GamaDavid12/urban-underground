@@ -4,18 +4,14 @@ import useProductCrud from "./hooks/useProductCrud";
 import ProductTable from "./components/ProductTable";
 import ProductModal from "./components/ProductModal";
 import ProductCard from "./components/ProductCard";
-import useUniqueProductCrud from "./hooks/useUniqueProductCrud";
-import UniqueProductModal from "../../Admin/UniqueProductModal";
 
 export const ProductManagementPage = () => {
   const { products, createProduct, updateProduct, deleteProduct } =
     useProductCrud();
 
- const { uniqueProducts, createUniqueProduct, deleteUniqueProduct } = useUniqueProductCrud();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [viewProduct, setViewProduct] = useState(null);
-  
 
   const handleOpen = (product = null) => {
     setSelectedProduct(product);
@@ -42,21 +38,7 @@ export const ProductManagementPage = () => {
         >
           + Nuevo producto
         </button>
-
-           <button
-        onClick={() => setIsModalOpen(true)}
-        className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg"
-      >
-        + Producto Único
-      </button>
-      
       </header>
-
-        <UniqueProductModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={createUniqueProduct}
-      />
 
       <ProductTable
         products={products}
@@ -77,29 +59,6 @@ export const ProductManagementPage = () => {
         product={viewProduct}
         onClose={() => setViewProduct(null)}
       />
-
-           <div className="mt-6">
-        {uniqueProducts.map((p) => (
-          <div
-            key={p.id}
-            className="flex items-center justify-between bg-gray-800 p-3 rounded-xl mb-2"
-          >
-            <div className="flex items-center space-x-3">
-              <img src={p.image} alt={p.name} className="w-12 h-12 rounded-lg object-cover" />
-              <div>
-                <p className="font-bold">{p.name}</p>
-                <p className="text-sm text-gray-400">${p.price}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => deleteUniqueProduct(p.id)}
-              className="bg-red-600 hover:bg-red-500 px-3 py-1 rounded text-white"
-            >
-              Eliminar
-            </button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
