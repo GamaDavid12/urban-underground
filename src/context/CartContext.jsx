@@ -12,7 +12,34 @@ export const CartProvider = ({ children }) => {
       return [];
     }
   });
+
   const [isCartSidebarOpen, setIsCartSidebarOpen] = useState(false);
+
+  const [premiumShipping, setPremiumShipping] = useState(false);
+
+const [shippingMethod, setShippingMethod] = useState(null);
+
+
+  const [shippingCost, setShippingCost] = useState(0);
+
+useEffect(() => {
+  if (premiumShipping) {
+    setShippingMethod('premium');
+    setShippingCost(14);
+    } else {
+    setShippingMethod(null);
+    setShippingCost(0);
+  }
+  setDiscountCode('');
+  setDiscountValue(0);
+}, [premiumShipping]);
+
+
+  const [discountCode, setDiscountCode] = useState('');
+  const [discountValue, setDiscountValue] = useState(0);
+
+  const [contactInfo, setContactInfo] = useState({});
+  const [shippingAddress, setShippingAddress] = useState({});
 
   useEffect(() => {
     try {
@@ -42,22 +69,21 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = (productId, newQuantity) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      ).filter(item => item.quantity > 0)
+      prevItems
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: newQuantity } : item
+        )
+        .filter(item => item.quantity > 0)
     );
   };
 
- 
   const clearCart = () => {
     setCartItems([]);
   };
 
-
   const toggleCartSidebar = () => {
     setIsCartSidebarOpen((prevState) => !prevState);
   };
-
 
   const getCartTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -74,6 +100,20 @@ export const CartProvider = ({ children }) => {
         isCartSidebarOpen,
         toggleCartSidebar,
         getCartTotal,
+        premiumShipping,
+        setPremiumShipping,
+        shippingMethod,
+        setShippingMethod,
+        shippingCost,   
+        setShippingCost,    
+        discountCode,
+        setDiscountCode,
+        discountValue,
+        setDiscountValue,
+        contactInfo,
+        setContactInfo,
+        shippingAddress,
+        setShippingAddress
       }}
     >
       {children}

@@ -12,8 +12,8 @@
 .cartSidebar {
   position: fixed;
   top: 0;
-  right: -350px;
-  width: 350px;
+  right: -400px; /* ancho aumentado */
+  width: 400px; /* antes 350px */
   height: 100vh;
   background-color: #010000;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
@@ -174,12 +174,20 @@
 }
 
 .shippingInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    font-size: 0.9rem;
-    color: #010000;
-    margin-bottom: 19px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* evita salto de línea */
+  font-size: 0.9rem;
+  color: #010000;
+  margin-bottom: 19px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shippingInfo label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .catalogButton {
@@ -213,6 +221,12 @@
   transition: background-color 0.3s ease, transform 0.1s ease;
   margin-top: 1rem;
 }
+
+.checkoutButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 
 .checkoutButton:hover {
   background-color: #e6a700;

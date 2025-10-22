@@ -7,7 +7,8 @@ import CategoryPage from './pages/Category/CategoryPage.jsx';
 import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
 import AdminHomePage from './pages/Admin/AdminHomePage.jsx'; 
 import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryManagementPage.jsx';
-import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage";
+import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage.jsx";
+import Checkout from './pages/Checkout/Checkout.jsx';
 
 
 const routes = [
@@ -55,11 +56,20 @@ const routes = [
         ],
     },
     
+    {
+    path: '/checkout',
+    element: <Checkout />,
+  },
     // Ruta de Fallback (404)
     {
         path: '*',
         element: <div>404 - Página no encontrada</div>,
     },
+
+ // {
+  //path: '*',
+   //element: <div>404 - Página no encontrada</div>,
+ //},
 ];
 
 export default routes;

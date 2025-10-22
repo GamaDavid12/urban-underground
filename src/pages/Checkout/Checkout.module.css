@@ -1,0 +1,74 @@
+.checkoutContainer {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+}
+
+.contentWrapper {
+    display: flex;
+    width: 100%;
+}
+
+.formColumn {
+    flex: 1;
+    background-color: #fff;
+    padding: 3rem 4rem;
+    overflow-y: auto;
+    height: 100vh;
+    border-right: 1px solid #e8e8e8;
+    box-sizing: border-box;
+}
+
+.summaryColumn {
+    flex: 1;
+    background-color: #fafafa;
+    padding: 3rem 4rem;
+    box-sizing: border-box;
+}
+
+.summarySticky {
+    position: sticky;
+    top: 3rem;
+}
+
+.logo {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 900px) {
+    .contentWrapper {
+        flex-direction: column;
+        margin: 0;
+    }
+    .formColumn {
+        flex: none;
+        width: 100%;
+        padding: 2rem 1rem;
+        height: auto;
+        border-right: none;
+        order: 1; 
+    }
+    .summaryColumn {
+        flex: none;
+        width: 100%;
+        padding: 2rem 1rem;
+        height: auto;
+        order: 2; 
+    }
+    .summarySticky {
+        position: static;
+        top: 0;
+    }
+}

@@ -26,7 +26,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       <div className="actions">
-        <Link to="/registro" className="login">Ingresar</Link>
+        <Link to="registro" className="login">Ingresar</Link>
         
         <Button className={"px-5 py-1"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
           {totalItemsInCart > 0 && (
