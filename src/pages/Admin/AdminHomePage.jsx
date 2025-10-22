@@ -3,12 +3,15 @@ import { hotspotPositions } from '../../Mocks/hotspotsMock.js';
 import { allProductsData } from '../../Mocks/productsMock.js'; 
 
 const AdminHomePage = () => {
-    
+    //  array de todos los productos
+    const allProducts = Object.values(allProductsData).flatMap(cat => cat.products);
+
     const handleHotspotAdminClick = (hotspotData) => {
-        const product = allProductsData.find(p => p.id === hotspotData.productId);
-        
+       
+        const product = allProducts.find(p => p.id === hotspotData.productId);
+
         console.log("Hotspot clicado en modo Admin para el producto:", product?.name, "Posición:", hotspotData.top, hotspotData.left);
-        
+
         alert(`ADMIN: Gestionar Hotspot ID ${hotspotData.id}\nProducto: ${product?.name || 'No Encontrado'}\nTop: ${hotspotData.top}%, Left: ${hotspotData.left}%`);
     };
 
@@ -31,7 +34,8 @@ const AdminHomePage = () => {
                 />
                 
                 {hotspotPositions.map((hotspot) => {
-                    const productData = allProductsData.find(p => p.id === hotspot.productId);
+                   
+                    const productData = allProducts.find(p => p.id === hotspot.productId);
 
                     return (
                         <Hotspot 

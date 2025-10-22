@@ -1,6 +1,4 @@
-// src/pages/Admin/AdminSidebar.jsx
-
-import { Link } from "react-router-dom"; // Corregido a react-router-dom
+import { Link } from "react-router-dom";
 import { adminLinks } from "../../Mocks/adminDataMock";
 
 const AdminSidebar = () => {
