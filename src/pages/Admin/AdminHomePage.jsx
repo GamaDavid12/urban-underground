@@ -1,4 +1,3 @@
-import React from 'react';
 import Hotspot from "../../components/Hotspot/Hotspot.jsx"; 
 import { hotspotPositions } from '../../Mocks/hotspotsMock.js';
 import { allProductsData } from '../../Mocks/productsMock.js'; 

@@ -23,7 +23,11 @@ const MainAppContent = () => {
   };
 
   const authPaths = ['/registro', '/iniciar-sesion', '/recuperar']; 
-  const shouldShowFullLayout = !authPaths.includes(location.pathname);
+
+  const isAdminPath = location.pathname.startsWith('/admin');
+    
+  const shouldShowFullLayout = !authPaths.includes(location.pathname) && !isAdminPath;
+
   const shouldShowAuthBackground = authPaths.includes(location.pathname);
 
   const element = useRoutes(appRoutes);
@@ -44,11 +48,26 @@ const MainAppContent = () => {
         <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       )}
 
-      {shouldShowFullLayout && (
-        <MainLayout>
-          {element}
-        </MainLayout>
-      )}
+     {shouldShowFullLayout ? (
+  <MainLayout>
+    {element}
+  </MainLayout>
+) : isAdminPath ? (
+  <>
+    {element}
+  </>
+) : (
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    width: '100%'
+  }}>
+    {element}
+  </div>
+)}
 
       {shouldShowFullLayout && <Footer />}
     </>
@@ -57,7 +76,7 @@ const MainAppContent = () => {
 
 function App() {
   return (
-    <div className={`${styles.app} overflow-x-hidden`}>
+    <div className={`${styles.app} overflow-x-hidden min-h-screen`}>
       <Router>
         <CartProvider>
           <MainAppContent />

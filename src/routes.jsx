@@ -4,7 +4,9 @@ import PasswordRecoveryForm from './pages/PasswordRecovery/PasswordRecoveryForm'
 import ContactPage from './pages/ContactPage/ContactPage.jsx';
 import HomePage from './pages/HomePage/HomePage.jsx';
 import CategoryPage from './pages/Category/CategoryPage.jsx';
-import CreateCategoryPage from './pages/Admin/CategoryManagement/CategoryManagementPage.jsx';
+import DashboardLayout from './pages/Admin/DashboardLayout.jsx';
+import AdminHomePage from './pages/Admin/AdminHomePage.jsx'; 
+import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryManagementPage.jsx';
 
 const routes = [
   {
@@ -31,14 +33,27 @@ const routes = [
     path: "/categorias/:categoryId",
     element: <CategoryPage />,
   },
+// Rutas Admin
     {
-    path: '/admin/crear-categoria', 
-    element: <CreateCategoryPage />,
-  },
- // {
-  //path: '*',
-   //element: <div>404 - Página no encontrada</div>,
- //},
+        path: '/admin',
+        element: <DashboardLayout />,
+        children: [
+            {
+                index: true, 
+                element: <AdminHomePage />, 
+            },
+            {
+                path: 'gestionar-categorias',
+                element: <CategoryManagementPage />,
+            },
+        ],
+    },
+    
+    // Ruta de Fallback (404)
+    {
+        path: '*',
+        element: <div>404 - Página no encontrada</div>,
+    },
 ];
 
 export default routes;
