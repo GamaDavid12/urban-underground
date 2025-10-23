@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CategoryModal from "../../../components/CategoryModal/CategoryModal.jsx";
 import FormCategory from "./FormCategory.jsx";
 import HeaderTitle from "../../../components/HeaderTitle/HeaderTitle.jsx";
@@ -7,18 +7,38 @@ import CategoryTable from './CategoryTable.jsx';
 
 const CategoryManagementPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
+    const [categories, setCategories] = useState([]);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/categories/list');
+            const data = await response.json();
+            const formatted = data.categories.map(cat => ({
+                id: cat.id,
+                name: cat.nombre,
+                productCount: cat._count?.productos ?? 0
+            }));
+            setCategories(formatted);
+        } catch (error) {
+            console.error('Error al cargar categorías:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
     const handleSuccess = () => {
-        alert("Categoría creada exitosamente.");
+        fetchCategories(); // 🔁 recarga la tabla después de crear
         setIsModalOpen(false);
     };
 
     return (
-    <div className="p-4 sm:p-8 bg-[#010000] flex flex-col h-full"> 
-            
+        <div className="p-4 sm:p-8 bg-[#010000] flex flex-col h-full"> 
             <HeaderTitle
                 title="Gestión de Categorías"
                 actions={
@@ -32,7 +52,7 @@ const CategoryManagementPage = () => {
             />
 
             <div className="flex-1 overflow-auto"> 
-                <CategoryTable />
+                <CategoryTable categories={categories} />
             </div>
 
             <CategoryModal 

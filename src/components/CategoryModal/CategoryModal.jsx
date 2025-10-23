@@ -12,7 +12,7 @@ const CategoryModal = ({ isOpen, onClose, children, title = "OPERACIÓN CATEGORI
       onClick={onClose}
     >
       <div 
-      className="bg-gray-900 border border-gray-700 w-full max-w-xs p-6 sm:p-8 rounded-xl relative transform transition-all duration-300 scale-100"
+      className="bg-[#1E1E1E] border border-gray-700 w-full max-w-xs p-6 sm:p-8 rounded-xl relative transform transition-all duration-300 scale-100"
         onClick={e => e.stopPropagation()}
       >
         

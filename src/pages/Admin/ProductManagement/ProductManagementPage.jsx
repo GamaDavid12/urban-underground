@@ -18,11 +18,20 @@ export const ProductManagementPage = () => {
     setIsModalOpen(true);
   };
 
-  const handleSave = (values) => {
-    if (selectedProduct) updateProduct(selectedProduct.id, values);
-    else createProduct(values);
+const handleSave = async (values) => {
+  try {
+    if (selectedProduct) {
+      await updateProduct(selectedProduct.id, values);
+      alert("Producto actualizado correctamente");
+    } else {
+      await createProduct(values);
+    }
     setIsModalOpen(false);
-  };
+    setSelectedProduct(null);
+  } catch (error) {
+    alert("Error al guardar producto");
+  }
+};
 
   const handleView = (product) => setViewProduct(product);
 

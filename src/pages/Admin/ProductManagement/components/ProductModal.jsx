@@ -1,10 +1,30 @@
-// src/pages/Admin/ProductManagement/components/ProductModal.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
   const isEditing = !!product;
+
+  const [categories, setCategories] = useState([]);
+  const [loadingCategories, setLoadingCategories] = useState(false);
+  const [categoriesError, setCategoriesError] = useState(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      setLoadingCategories(true);
+      try {
+        const res = await fetch("http://localhost:3000/categories/list");
+        if (!res.ok) throw new Error("Error al cargar categorías");
+        const data = await res.json();
+        setCategories(data.categories);
+      } catch (err) {
+        setCategoriesError(err.message);
+      } finally {
+        setLoadingCategories(false);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -13,7 +33,8 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
       price: product?.price || "",
       stock: product?.stock || "",
       brand: product?.brand || "",
-      category: product?.category || "",
+      // Inicializar category con el id (si existe)
+      category: product?.category?.id || "",
       image: product?.image || null,
     },
     enableReinitialize: true,
@@ -22,11 +43,17 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
       description: Yup.string().required("La descripción es obligatoria"),
       price: Yup.number().required("El precio es obligatorio").positive(),
       stock: Yup.number().required("El stock es obligatorio").min(0),
+      category: Yup.string().required("La categoría es obligatoria"),
     }),
     onSubmit: (values) => {
-      onSave(values);
+      const payload = {
+        ...values,
+        categoryId: values.category, // este es el campo que espera el backend
+      };
+      delete payload.category; // eliminamos el antiguo campo para evitar confusión
+      onSave(payload);
       onClose();
-    },
+    }
   });
 
   if (!isOpen) return null;
@@ -51,7 +78,7 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
           </h2>
 
           <form onSubmit={formik.handleSubmit} className="space-y-4">
-            {["name", "brand", "description", "category"].map((field) => (
+            {["name", "brand", "description"].map((field) => (
               <div key={field}>
                 <label className="block text-sm text-gray-300 mb-1 capitalize">
                   {field}
@@ -71,6 +98,38 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
                 )}
               </div>
             ))}
+
+            {/* Select dinámico de categorías */}
+            <div>
+              <label className="block text-sm text-gray-300 mb-1 capitalize">
+                Categoría
+              </label>
+              {loadingCategories ? (
+                <p>Cargando categorías...</p>
+              ) : categoriesError ? (
+                <p className="text-red-500">{categoriesError}</p>
+              ) : (
+                <select
+                  name="category"
+                  value={formik.values.category}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  className="w-full px-3 py-2 rounded-md bg-[#2a2a2a] border border-gray-700 focus:ring-2 focus:ring-[#FAC602] text-white"
+                >
+                  <option value="">Selecciona una categoría</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.nombre}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {formik.touched.category && formik.errors.category && (
+                <p className="text-red-500 text-sm mt-1">
+                  {formik.errors.category}
+                </p>
+              )}
+            </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -155,5 +214,3 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
 };
 
 export default ProductModal;
-
-

@@ -1,22 +1,18 @@
+// src/pages/admin/category/CategoryTable.jsx
 import React, { useState } from 'react';
 import Button from '../../../components/Button/Button';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import CategoryModal from '../../../components/CategoryModal/CategoryModal.jsx';
 
-const mockCategories = [
-  { id: 1, name: "ROPA", productCount: 150 },
-  { id: 2, name: "ACCESORIOS", productCount: 80 },
-];
-
-const CategoryTable = ({ categories = mockCategories }) => {
+const CategoryTable = ({ categories }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(null); 
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [newCategoryName, setNewCategoryName] = useState('');
 
   const handleEdit = (category) => {
-    setModalTitle('EDITAR CATEGORIA');
-    setSelectedCategory(category); 
+    setModalTitle('EDITAR CATEGORÍA');
+    setSelectedCategory(category);
     setNewCategoryName(category.name);
     setIsModalOpen(true);
   };
@@ -27,17 +23,17 @@ const CategoryTable = ({ categories = mockCategories }) => {
     setSelectedCategory(null);
     setNewCategoryName('');
   };
-  
+
   const handleSaveEdit = () => {
-      if (selectedCategory && newCategoryName.trim() !== '') {
-          console.log(`Guardando edición para ID ${selectedCategory.id}. Nuevo nombre: ${newCategoryName}`);
-          handleCloseModal();
-      }
+    if (selectedCategory && newCategoryName.trim() !== '') {
+      console.log(`Guardando edición para ID ${selectedCategory.id}. Nuevo nombre: ${newCategoryName}`);
+      handleCloseModal();
+    }
   };
 
   const handleDelete = (categoryName) => {
     console.log('Borrar', categoryName);
-  }
+  };
 
   return (
     <>
@@ -45,14 +41,13 @@ const CategoryTable = ({ categories = mockCategories }) => {
         <table className="min-w-full divide-y divide-gray-700">
           <thead className="bg-gray-800">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                CATEGORIAS
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                CATEGORÍAS
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                 PRODUCTOS
               </th>
-              <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-300 uppercase tracking-wider">
-                
+              <th className="px-6 py-3 text-center text-xs font-medium text-gray-300 uppercase tracking-wider">
               </th>
             </tr>
           </thead>
@@ -70,7 +65,7 @@ const CategoryTable = ({ categories = mockCategories }) => {
                     <Button
                       icon={<FaPencilAlt />}
                       variant="icon"
-                      onClick={() => handleEdit(category)} 
+                      onClick={() => handleEdit(category)}
                       className="text-yellow-400 hover:text-white"
                     />
                     <Button
@@ -89,34 +84,33 @@ const CategoryTable = ({ categories = mockCategories }) => {
           &lt;1 / 10&gt;
         </div>
       </div>
-      
+
       <CategoryModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         title={modalTitle}
       >
         <div className="space-y-4">
-            <label htmlFor="categoryName" className="block text-sm font-medium text-gray-300">
-                Nombre
-            </label>
-            <input
-                id="categoryName"
-                type="text"
-                value={newCategoryName}
-                onChange={(e) => setNewCategoryName(e.target.value)}
-                placeholder="Ingresa el nuevo nombre"
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:ring-yellow-500 focus:border-yellow-500 transition duration-150"
+          <label htmlFor="categoryName" className="block text-sm font-medium text-gray-300">
+            Nombre
+          </label>
+          <input
+            id="categoryName"
+            type="text"
+            value={newCategoryName}
+            onChange={(e) => setNewCategoryName(e.target.value)}
+            placeholder="Ingresa el nuevo nombre"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:ring-yellow-500 focus:border-yellow-500 transition duration-150"
+          />
+          <div className="pt-4 flex justify-end">
+            <Button
+              text="Guardar Cambios"
+              variant="primary"
+              onClick={handleSaveEdit}
+              disabled={!newCategoryName.trim() || newCategoryName.trim() === selectedCategory?.name}
+              className="w-full sm:w-auto"
             />
-            
-            <div className="pt-4 flex justify-end">
-                <Button
-                    text="Guardar Cambios"
-                    variant="primary"
-                    onClick={handleSaveEdit}
-                    disabled={!newCategoryName.trim() || newCategoryName.trim() === selectedCategory?.name} 
-                    className="w-full sm:w-auto"
-                />
-            </div>
+          </div>
         </div>
       </CategoryModal>
     </>
