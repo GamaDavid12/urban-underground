@@ -1,0 +1,6 @@
+import axios from "axios";
+
+export const UrbanApi= axios.create({
+  baseURL: process.env.BASE_URL,
+  timeout: 5000
+})
