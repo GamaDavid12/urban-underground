@@ -34,12 +34,6 @@ const MainAppContent = () => {
 
   return (
     <>
-      {shouldShowAuthBackground && (
-        <Container backgroundImage={authBackgroundImage}>
-          {element}
-        </Container>
-      )}
-
       {shouldShowFullLayout && <Navbar toggleSidebar={toggleSidebar} />}
       {shouldShowFullLayout && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
       <CartSidebar />
@@ -57,6 +51,7 @@ const MainAppContent = () => {
     {element}
   </>
 ) : (
+  <Container backgroundImage={authBackgroundImage}>
   <div style={{
     display: 'flex',
     flexDirection: 'column',
@@ -67,6 +62,7 @@ const MainAppContent = () => {
   }}>
     {element}
   </div>
+  </Container>
 )}
 
       {shouldShowFullLayout && <Footer />}
