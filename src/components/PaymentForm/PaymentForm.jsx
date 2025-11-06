@@ -42,7 +42,6 @@ const PaymentForm = ({ onPrevStep, contactData, shippingData, shippingMethod }) 
       const discount = discountValue || 0;
       const total = subtotal + shipping - discount;
 
-      // ✅ Asegurar que los IDs sean numéricos y válidos
       const items = cartItems.map((item) => ({
         productId: Number(item.id || item.productId || item._id || item.product?.id),
         name: item.name,
@@ -50,7 +49,6 @@ const PaymentForm = ({ onPrevStep, contactData, shippingData, shippingMethod }) 
         quantity: item.quantity,
       }));
 
-      // ✅ REFORMATEO del payload para que el backend lo acepte correctamente
       const orderData = {
         contact: {
           correo: contactData.correo || contactData.email || '',
@@ -98,7 +96,6 @@ const PaymentForm = ({ onPrevStep, contactData, shippingData, shippingMethod }) 
 
       const savedOrder = await res.json();
 
-      // ✅ Guardar la orden completa en localStorage (incluye fecha e ID)
       localStorage.setItem('lastOrder', JSON.stringify({
         ...orderData,
         id: savedOrder?.compra?.id || Date.now(),
@@ -108,7 +105,7 @@ const PaymentForm = ({ onPrevStep, contactData, shippingData, shippingMethod }) 
       clearCart();
       alert('✅ Pago procesado con éxito');
 
-      // ✅ Redirigir correctamente a la ruta registrada
+    
       navigate('/confirmacion', { state: { order: savedOrder } });
 
     } catch (err) {

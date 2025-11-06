@@ -16,14 +16,12 @@ export const CartProvider = ({ children }) => {
   const [isCartSidebarOpen, setIsCartSidebarOpen] = useState(false);
   const [premiumShipping, setPremiumShipping] = useState(false);
 
-  // 🔹 shippingMethod seguro con valor por defecto
   const [shippingMethod, setShippingMethod] = useState('standard');
   const [shippingCost, setShippingCost] = useState(0);
 
   const [discountCode, setDiscountCode] = useState('');
   const [discountValue, setDiscountValue] = useState(0);
 
-  // 🔹 inicializamos contacto y dirección con campos obligatorios vacíos
   const [contactInfo, setContactInfo] = useState({
     correo: '',
     nombre: '',
@@ -44,7 +42,7 @@ export const CartProvider = ({ children }) => {
     shippingMethod: 'standard',
   });
 
-  // 🔹 Efecto para actualizar shippingMethod y shippingCost
+
   useEffect(() => {
     if (premiumShipping) {
       setShippingMethod('premium');
@@ -64,7 +62,6 @@ export const CartProvider = ({ children }) => {
     setDiscountValue(0);
   }, [premiumShipping, shippingMethod]);
 
-  // 🔹 Guardar cartItems en localStorage
   useEffect(() => {
     try {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
