@@ -11,19 +11,15 @@ const Checkout = () => {
         cartItems,
         premiumShipping,
         shippingMethod,
-        discountValue
+        discountValue,
+        shippingAddress,
+        contactInfo,
+        setShippingMethod
     } = useCart();
 
     const [checkoutStep, setCheckoutStep] = useState('information');
-
-
-    const [contactData, setContactData] = useState(null);
-    const [shippingData, setShippingData] = useState(null);
-
-   const { shippingAddress, contactInfo } = useCart();
-   const { setShippingMethod } = useCart();
-
-
+    const [contactData, setContactData] = useState({});
+    const [shippingData, setShippingData] = useState({});
 
     const orderData = useMemo(() => {
         const subtotal = cartItems.reduce(
@@ -59,16 +55,18 @@ const Checkout = () => {
             setCheckoutStep('shipping');
         } else if (checkoutStep === 'shipping') {
             setShippingData(data);
-            setShippingMethod(data.shippingMethod);
+            if (data.shippingMethod) setShippingMethod(data.shippingMethod);
             setCheckoutStep('payment');
         }
     };
 
-    const handlePrevStep = () => {
+    const handlePrevStep = (step) => {
         if (checkoutStep === 'shipping') {
             setCheckoutStep('information');
         } else if (checkoutStep === 'payment') {
             setCheckoutStep('shipping');
+        } else if (step) {
+            setCheckoutStep(step);
         }
     };
 
@@ -77,17 +75,15 @@ const Checkout = () => {
             case 'information':
                 return <FormEnvios onNextStep={handleNextStep} />;
             case 'shipping':
-                return <ShippingForm onNextStep={handleNextStep} onPrevStep={handlePrevStep} />;
+                return <ShippingForm onNextStep={handleNextStep} onPrevStep={() => handlePrevStep('information')} />;
             case 'payment':
                 return (
                    <PaymentForm
-                      onPrevStep={handlePrevStep}
-                     order={orderData}
-                     contactData={contactInfo}
-                      shippingData={shippingAddress}
+                      onPrevStep={() => handlePrevStep('shipping')}
+                      contactData={contactData || contactInfo}
+                      shippingData={shippingData || shippingAddress}
                       shippingMethod={shippingMethod}
                    />
-
                 );
             default:
                 return <FormEnvios onNextStep={handleNextStep} />;
@@ -114,4 +110,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-

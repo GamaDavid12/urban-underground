@@ -14,33 +14,57 @@ export const CartProvider = ({ children }) => {
   });
 
   const [isCartSidebarOpen, setIsCartSidebarOpen] = useState(false);
-
   const [premiumShipping, setPremiumShipping] = useState(false);
 
-const [shippingMethod, setShippingMethod] = useState(null);
-
-
+  // 🔹 shippingMethod seguro con valor por defecto
+  const [shippingMethod, setShippingMethod] = useState('standard');
   const [shippingCost, setShippingCost] = useState(0);
-
-useEffect(() => {
-  if (premiumShipping) {
-    setShippingMethod('premium');
-    setShippingCost(14);
-    } else {
-    setShippingMethod(null);
-    setShippingCost(0);
-  }
-  setDiscountCode('');
-  setDiscountValue(0);
-}, [premiumShipping]);
-
 
   const [discountCode, setDiscountCode] = useState('');
   const [discountValue, setDiscountValue] = useState(0);
 
-  const [contactInfo, setContactInfo] = useState({});
-  const [shippingAddress, setShippingAddress] = useState({});
+  // 🔹 inicializamos contacto y dirección con campos obligatorios vacíos
+  const [contactInfo, setContactInfo] = useState({
+    correo: '',
+    nombre: '',
+    apellido: '',
+  });
 
+  const [shippingAddress, setShippingAddress] = useState({
+    nombre: '',
+    apellido: '',
+    direccion: '',
+    apartamento: '',
+    ciudad: '',
+    estado: '',
+    codigoPostal: '',
+    pais: '',
+    telefono: '',
+    prefijoTelefono: '+54',
+    shippingMethod: 'standard',
+  });
+
+  // 🔹 Efecto para actualizar shippingMethod y shippingCost
+  useEffect(() => {
+    if (premiumShipping) {
+      setShippingMethod('premium');
+      setShippingCost(14);
+    } else if (shippingMethod === 'standard') {
+      setShippingCost(12);
+    } else if (shippingMethod === 'express') {
+      setShippingCost(25);
+    } else if (shippingMethod === 'premium') {
+      setShippingCost(14);
+    } else {
+      setShippingMethod('standard');
+      setShippingCost(12);
+    }
+
+    setDiscountCode('');
+    setDiscountValue(0);
+  }, [premiumShipping, shippingMethod]);
+
+  // 🔹 Guardar cartItems en localStorage
   useEffect(() => {
     try {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -104,8 +128,8 @@ useEffect(() => {
         setPremiumShipping,
         shippingMethod,
         setShippingMethod,
-        shippingCost,   
-        setShippingCost,    
+        shippingCost,
+        setShippingCost,
         discountCode,
         setDiscountCode,
         discountValue,
@@ -113,7 +137,7 @@ useEffect(() => {
         contactInfo,
         setContactInfo,
         shippingAddress,
-        setShippingAddress
+        setShippingAddress,
       }}
     >
       {children}
