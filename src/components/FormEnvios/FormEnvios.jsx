@@ -3,9 +3,7 @@ import styles from './FormEnvios.module.css';
 import { useCart } from '../../context/CartContext';
 
 const paises = [
-  { codigo: 'AR', nombre: 'Argentina', prefijo: '+54', estados: ['Buenos Aires', 'Córdoba', 'Santa Fe'] },
-  { codigo: 'US', nombre: 'Estados Unidos', prefijo: '+1', estados: ['California', 'Texas', 'Nueva York'] },
-  { codigo: 'ES', nombre: 'España', prefijo: '+34', estados: ['Madrid', 'Cataluña', 'Andalucía'] },
+  { codigo: 'AR', nombre: 'Argentina', prefijo: '+54', ciudades: ['Buenos Aires', 'Córdoba', 'Santa Fe'] },
 ];
 
 const FormEnvios = ({ onNextStep }) => {
@@ -20,28 +18,27 @@ const FormEnvios = ({ onNextStep }) => {
     direccion: shippingAddress?.direccion || '',
     apartamento: shippingAddress?.apartamento || '',
     ciudad: shippingAddress?.ciudad || '',
-    estado: shippingAddress?.estado || '',
     codigoPostal: shippingAddress?.codigoPostal || '',
     telefono: shippingAddress?.telefono || '',
     prefijoTelefono: shippingAddress?.prefijoTelefono || '',
   });
 
-  const [estadosDisponibles, setEstadosDisponibles] = useState([]);
+  const [ciudadesDisponibles, setCiudadesDisponibles] = useState([]);
   const [sugerenciasDireccion, setSugerenciasDireccion] = useState([]);
   const [buscandoDireccion, setBuscandoDireccion] = useState(false);
 
   useEffect(() => {
     const paisSeleccionado = paises.find(p => p.codigo === formData.pais);
     if (paisSeleccionado) {
-      setEstadosDisponibles(paisSeleccionado.estados);
+      setCiudadesDisponibles(paisSeleccionado.ciudades);
       setFormData(prev => ({
         ...prev,
         prefijoTelefono: paisSeleccionado.prefijo,
-        estado: prev.estado && paisSeleccionado.estados.includes(prev.estado) ? prev.estado : ''
+        estado: prev.estado && paisSeleccionado.ciudades.includes(prev.ciudad) ? prev.ciudad : ''
       }));
     } else {
-      setEstadosDisponibles([]);
-      setFormData(prev => ({ ...prev, prefijoTelefono: '', estado: '' }));
+      setCiudadesDisponibles([]);
+      setFormData(prev => ({ ...prev, prefijoTelefono: '', ciudad: '' }));
     }
   }, [formData.pais]);
 
@@ -79,7 +76,7 @@ const FormEnvios = ({ onNextStep }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requiredFields = ['correo', 'pais', 'nombre', 'apellido', 'direccion', 'ciudad', 'estado', 'codigoPostal', 'telefono'];
+    const requiredFields = ['correo', 'pais', 'nombre', 'apellido', 'direccion', 'ciudad', 'codigoPostal', 'telefono'];
     for (let field of requiredFields) {
       if (!formData[field] || formData[field].trim() === '') {
         alert(`Por favor completa el campo: ${field}`);
@@ -96,7 +93,6 @@ const FormEnvios = ({ onNextStep }) => {
       direccion: formData.direccion,
       apartamento: formData.apartamento,
       ciudad: formData.ciudad,
-      estado: formData.estado,
       codigoPostal: formData.codigoPostal,
       telefono: formData.telefono,
       prefijoTelefono: formData.prefijoTelefono,
@@ -194,25 +190,16 @@ const FormEnvios = ({ onNextStep }) => {
         />
 
         <div className={styles.row}>
-          <input
-            type="text"
-            name="ciudad"
-            placeholder="Ciudad"
-            value={formData.ciudad}
-            onChange={handleChange}
-            className={`${styles.input} ${styles.inputThird}`}
-          />
-
           <select
-            name="estado"
-            value={formData.estado}
+            name="ciudad"
+            value={formData.ciudad}
             onChange={handleChange}
             className={`${styles.select} ${styles.inputThird}`}
             disabled={!formData.pais}
           >
-            <option value="" disabled>Estado</option>
-            {estadosDisponibles.map(estado => (
-              <option key={estado} value={estado}>{estado}</option>
+            <option value="" disabled>Ciudad</option>
+            {ciudadesDisponibles.map(ciudad => (
+              <option key={ciudad} value={ciudad}>{ciudad}</option>
             ))}
           </select>
 
