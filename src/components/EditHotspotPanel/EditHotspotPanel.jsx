@@ -1,28 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Button/Button.jsx";
+import { API_ROUTES, PRODUCTS_ROUTES } from "../../api/APIRoutes/index.js";
+import { axiosAPI } from "../../api/api.js";
 
-const API_PRODUCTS = "http://localhost:3000/api/products";
-
-const EditHotspotPanel = ({ hotspot, onClose, onSave, onDelete, onProductChange }) => {
+const EditHotspotPanel = ({
+  hotspot,
+  onClose,
+  onSave,
+  onDelete,
+  onProductChange,
+}) => {
   const [products, setProducts] = useState([]);
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoadingProducts(true);
-      try {
-        const response = await fetch(API_PRODUCTS);
-        if (!response.ok) throw new Error(`Error al cargar productos: ${response.statusText}`);
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        console.error("Error al cargar productos:", err);
-        setError(err.message);
-      } finally {
+  const fetchProducts = async () => {
+    axiosAPI
+      .get(`${API_ROUTES.PRODUCTS}${PRODUCTS_ROUTES.LIST}`)
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar productos:", error);
+        setError(error.message);
+      })
+      .finally(() => {
         setIsLoadingProducts(false);
-      }
-    };
+      });
+  };
+  
+  useEffect(() => {
+    // const fetchProducts = async () => {
+    //   setIsLoadingProducts(true);
+    //   try {
+    //     const response = await fetch(API_PRODUCTS);
+    //     if (!response.ok)
+    //       throw new Error(`Error al cargar productos: ${response.statusText}`);
+    //     const data = await response.json();
+    //     setProducts(data);
+    //   } catch (err) {
+    //     console.error("Error al cargar productos:", err);
+    //     setError(err.message);
+    //   } finally {
+    //     setIsLoadingProducts(false);
+    //   }
+    // };
     fetchProducts();
   }, []);
 
@@ -44,7 +66,9 @@ const EditHotspotPanel = ({ hotspot, onClose, onSave, onDelete, onProductChange 
           ✕
         </button>
 
-        <h2 className="text-2xl font-bold mb-4 text-yellow-400">Editar Hotspot</h2>
+        <h2 className="text-2xl font-bold mb-4 text-yellow-400">
+          Editar Hotspot
+        </h2>
 
         <div className="mb-3">
           <label className="block text-gray-300 mb-1">Posición (Top %)</label>
