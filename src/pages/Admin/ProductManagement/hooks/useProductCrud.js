@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { API_ROUTES } from "../../../../api/APIRoutes";
 
-const API_URL = "http://localhost:3000/products";
+const API_URL = (`${API_ROUTES.PRODUCTS}`)
 
 const useProductCrud = () => {
   const [products, setProducts] = useState([]);

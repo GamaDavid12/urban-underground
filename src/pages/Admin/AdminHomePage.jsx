@@ -4,7 +4,7 @@ import EditHotspotPanel from "../../components/EditHotspotPanel/EditHotspotPanel
 import { API_ROUTES, PRODUCTS_ROUTES } from "../../api/APIRoutes/index.js";
 import { axiosAPI } from "../../api/api.js";
 
-const API_URL_HOTSPOTS = "http://localhost:3000/api/hotspots";
+const API_URL_HOTSPOTS = (`${API_ROUTES.HOTSPOTS}`)
 
 const AdminHomePage = () => {
   const [hotspots, setHotspots] = useState([]);

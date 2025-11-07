@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../../api/APIRoutes";
 
 const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
   const isEditing = !!product;
@@ -13,7 +14,7 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
     const fetchCategories = async () => {
       setLoadingCategories(true);
       try {
-        const res = await fetch("http://localhost:3000/categories/list");
+        const res = await fetch((`${API_ROUTES.CATEGORIES}${CATEGORIES_ROUTES.LIST}`));
         if (!res.ok) throw new Error("Error al cargar categorías");
         const data = await res.json();
         setCategories(data.categories);

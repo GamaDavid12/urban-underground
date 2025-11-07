@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../../components/Button/Button.jsx";
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../api/APIRoutes/index.js";
 
 const FormCategory = ({ onCancel, onSuccess }) => {
   const [categoryName, setCategoryName] = useState("");
@@ -17,7 +18,7 @@ const FormCategory = ({ onCancel, onSuccess }) => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/categories/create", {
+      const response = await fetch((`${API_ROUTES.CATEGORIES}${CATEGORIES_ROUTES.CREATE}`), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
