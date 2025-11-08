@@ -34,7 +34,7 @@ const FormCategory = ({ onCancel, onSuccess }) => {
       console.log("Categoría creada:", data);
 
       setCategoryName("");
-      onSuccess(data);   // pasamos la data creada si la necesitamos
+      onSuccess(data);
     } catch (err) {
       console.error("Error al crear categoría:", err);
       setError(err.message);

@@ -21,7 +21,7 @@ const CartSidebar = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/categoria/ropa');
+    navigate('/categorias/verTodo');
     toggleCartSidebar();
   };
 

@@ -33,7 +33,7 @@ const CategoryManagementPage = () => {
     };
 
     const handleSuccess = () => {
-        fetchCategories(); // 🔁 recarga la tabla después de crear
+        fetchCategories();
         setIsModalOpen(false);
     };
 
