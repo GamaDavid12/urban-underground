@@ -1,3 +1,12 @@
+const getAllProducts = (data) => {
+  const all = [];
+  for (const key in data) {
+    if (data.hasOwnProperty(key) && data[key].products) {
+      all.push(...data[key].products);
+    }
+  }
+  return all;
+};
 
 export const allProductsData = {
   accesorios: {
@@ -390,4 +399,9 @@ export const allProductsData = {
       },
     ],
   },
+};
+allProductsData.verTodo = {
+  title: 'TODOS LOS PRODUCTOS',
+  subtitle: 'Explora nuestra colección completa',
+  products: getAllProducts(allProductsData),
 };
