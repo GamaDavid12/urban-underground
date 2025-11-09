@@ -4,6 +4,7 @@ import FormCategory from "./FormCategory.jsx";
 import HeaderTitle from "../../../components/HeaderTitle/HeaderTitle.jsx";
 import Button from '../../../components/Button/Button.jsx';
 import CategoryTable from './CategoryTable.jsx';
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../api/APIRoutes/index.js";
 
 const CategoryManagementPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,7 +12,7 @@ const CategoryManagementPage = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('http://localhost:3000/categories/list');
+              const response = await fetch(`${API_ROUTES.CATEGORIES}${CATEGORIES_ROUTES.LIST}`);
             const data = await response.json();
             const formatted = data.categories.map(cat => ({
                 id: cat.id,

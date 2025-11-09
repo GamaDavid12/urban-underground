@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../../api/APIRoutes";
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,7 @@ const useCategories = () => {
     const fetchCategories = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:3000/categories/list");
+        const res = await fetch((`${API_ROUTES.CATEGORIES}${CATEGORIES_ROUTES.LIST}`));
         if (!res.ok) throw new Error("Error al obtener categorías");
         const data = await res.json();
         setCategories(data.categories || []);
