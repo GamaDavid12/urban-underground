@@ -67,10 +67,11 @@ const Hotspot = ({
     };
   }, [isEditing, isDragging, onMove, id]);
 
+  
   const handleHotspotClick = (e) => {
     e.stopPropagation();
     if (isDragging) return;
-    if (onClick) onClick();
+    if (onClick && product) onClick(product);
   };
 
   return (

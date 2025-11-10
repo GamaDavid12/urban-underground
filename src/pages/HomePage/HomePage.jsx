@@ -5,7 +5,6 @@ import ProductCard from '../../components/ProductCard/ProductCard.jsx';
 import { allProductsData } from '../../Mocks/productsMock.js'; 
 import { hotspotPositions } from '../../Mocks/hotspotsMock.js'; 
 
-
 const getAllProductsFlat = (data) => {
   const all = {};
   for (const key in data) {
@@ -25,9 +24,16 @@ const HomePage = () => {
     return getAllProductsFlat(allProductsData);
   }, []);
 
+
   const handleHotspotClick = (hotspotData) => {
+    if (!hotspotData || !hotspotData.productId) {
+      console.error("Hotspot sin productId:", hotspotData);
+      return;
+    }
+
     const product = flatProducts[hotspotData.productId];
-    
+    console.log("Hotspot clickeado:", hotspotData, "Producto encontrado:", product);
+
     if (product) {
       setSelectedProduct(product);
       setIsModalOpen(true);
@@ -44,7 +50,6 @@ const HomePage = () => {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       
-      {/* Imagen de Fondo */}
       <img 
         src="/HomePage.png" 
         alt="Urban Underground Home" 
@@ -57,8 +62,8 @@ const HomePage = () => {
           top={spot.top}
           left={spot.left}
           product={spot} 
-          onClick={handleHotspotClick}
-        />
+          onClick={() => handleHotspotClick(spot)}
+            />
       ))}
 
       <CategoryModal 

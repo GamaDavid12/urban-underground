@@ -37,7 +37,7 @@ const OrderSummary = ({ order }) => {
 
   const subtotal = order?.subtotal || 0;
   const envio = shippingCost || 0;
-  const impuestos = order?.impuestos || 0;
+const impuestos = order?.impuestos ?? (subtotal * 0.10);
   const descuento = discountValue || 0;
 
   const totalBase = subtotal + envio + impuestos;
@@ -107,9 +107,9 @@ const OrderSummary = ({ order }) => {
         ) : null}
 
         <div className={styles.summaryItem}>
-          <span className={styles.summaryLabel}>Impuestos estimados</span>
+          <span className={styles.summaryLabel}>Impuestos (IVA 10%)</span>
           <span className={styles.summaryValue}>${impuestos.toFixed(2)}</span>
-        </div>
+      </div>
 
         {descuento > 0 && (
           <div className={styles.summaryItem}>

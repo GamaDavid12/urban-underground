@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react'; 
 import { useCart } from '../../context/CartContext';
 import FormEnvios from '../../components/FormEnvios/FormEnvios';
 import OrderSummary from '../../components/OrderSummary/OrderSummary';
 import ShippingForm from '../../components/ShippingForm/ShippingForm';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import styles from './Checkout.module.css';
+
+const TAX_RATE = 0.10; // IVA 10%
 
 const Checkout = () => {
     const {
@@ -36,9 +38,11 @@ const Checkout = () => {
             envio = 25.00;
         }
 
-        const impuestos = subtotal * 0.10;
+        const impuestos = subtotal * TAX_RATE; // IVA 10%
+
         const totalSinDescuento = subtotal + envio + impuestos;
         const total = Math.max(totalSinDescuento - discountValue, 0);
+        
 
         return {
             items: cartItems,
