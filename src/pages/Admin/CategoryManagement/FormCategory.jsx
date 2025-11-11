@@ -9,18 +9,24 @@ const FormCategory = ({ onCancel, onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!categoryName.trim()) {
-      return;
-    }
+    if (!categoryName.trim()) return;
 
     setLoading(true);
     setError(null);
 
     try {
+      // 🔐 Obtener el token del localStorage (ajusta el nombre si usas otro)
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error("No se encontró el token. Por favor inicia sesión nuevamente.");
+      }
+
       const response = await fetch("http://localhost:3000/categories/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // ✅ se envía el token aquí
         },
         body: JSON.stringify({ nombre: categoryName.trim() }),
       });
@@ -46,7 +52,10 @@ const FormCategory = ({ onCancel, onSuccess }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="mb-6">
-        <label htmlFor="categoryName" className="block text-sm font-medium text-gray-400 mb-2">
+        <label
+          htmlFor="categoryName"
+          className="block text-sm font-medium text-gray-400 mb-2"
+        >
           Nombre
         </label>
         <input
@@ -60,11 +69,7 @@ const FormCategory = ({ onCancel, onSuccess }) => {
         />
       </div>
 
-      {error && (
-        <div className="text-red-500 text-sm mb-2">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
 
       <div className="flex justify-end gap-3 mt-8">
         <Button

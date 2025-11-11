@@ -2,11 +2,8 @@ import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 const AdminSidebar = () => {
-  const { 
-    data: adminLinks,
-    loading, 
-    error 
-  } = useFetch('/api/admin/links');
+const { data: adminLinks, loading, error } = useFetch('/admin/links');
+
 
   if (loading) {
     return (
