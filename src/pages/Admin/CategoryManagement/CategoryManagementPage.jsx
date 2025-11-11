@@ -11,19 +11,24 @@ const CategoryManagementPage = () => {
     const [categories, setCategories] = useState([]);
 
     const fetchCategories = async () => {
-        try {
-              const response = await fetch(`${API_ROUTES.CATEGORIES}${CATEGORIES_ROUTES.LIST}`);
-            const data = await response.json();
-            const formatted = data.categories.map(cat => ({
-                id: cat.id,
-                name: cat.nombre,
-                productCount: cat._count?.productos ?? 0
-            }));
-            setCategories(formatted);
-        } catch (error) {
-            console.error('Error al cargar categorías:', error);
-        }
-    };
+  try {
+    const response = await fetch("http://localhost:3000/categories/list");
+    if (!response.ok) {
+      throw new Error("Error al obtener las categorías");
+    }
+
+    const data = await response.json();
+    const formatted = data.categories.map(cat => ({
+      id: cat.id,
+      name: cat.titulo,
+      path: cat.path,
+    }));
+
+    setCategories(formatted);
+  } catch (error) {
+    console.error("Error al cargar categorías:", error);
+  }
+};
 
     useEffect(() => {
         fetchCategories();

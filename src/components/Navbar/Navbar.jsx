@@ -3,11 +3,60 @@ import { Menu, ShoppingCart } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import Button from "../Button/Button";
+import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
 
 const Navbar = ({ toggleSidebar }) => {
   const { toggleCartSidebar, cartItems } = useCart();
-
+  const { userEmail, isAuthenticated, logout } = useAuth(); 
+  
+  const [showDropdown, setShowDropdown] = useState(false);
   const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+  const handleUserClick = () => {
+    // Abre/cierra el menú
+    setShowDropdown(!showDropdown);
+  };
+  
+  const handleLogout = () => {
+    logout(); // Llama a la función de useAuth para eliminar el token
+    setShowDropdown(false);
+  };
+
+  let authContent;
+  
+  if (isAuthenticated) {
+    // Lógica para acortar el email
+    const maxEmailLength = 15;
+    const displayEmail = userEmail.length > maxEmailLength 
+      ? userEmail.substring(0, maxEmailLength) + '...' 
+      : userEmail;
+
+    authContent = (
+      <div className="user-menu-container">
+        <span className="login authenticated-email" onClick={handleUserClick}> 
+          {displayEmail}
+        </span>
+        
+        {/* Menú Desplegable */}
+        {showDropdown && (
+          <div className="dropdown-menu"> 
+            <Link to="/perfil" className="dropdown-item" onClick={() => setShowDropdown(false)}>
+              Mi Perfil
+            </Link>
+            <button className="dropdown-item logout-button" onClick={handleLogout}>
+              Cerrar Sesión 🚪
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  } else {
+    // Si no está autenticado, muestra el enlace "Ingresar"
+    authContent = (
+      <Link to="/registro" className="login">Ingresar</Link>
+    );
+  }
 
   return (
     <nav className="navbar">
@@ -26,7 +75,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       <div className="actions">
-        <Link to="registro" className="login">Ingresar</Link>
+        {authContent} {/* Aquí se renderiza el email con el dropdown o "Ingresar" */}
         
         <Button className={"px-5 py-1"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
           {totalItemsInCart > 0 && (
