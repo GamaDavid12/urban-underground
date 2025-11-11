@@ -18,7 +18,8 @@ const Registro = () => {
     setError("");
     setSuccess("");
 
-    const username = e.target.username.value;
+    const nombre = e.target.nombre.value;
+    const apellido = e.target.apellido.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
@@ -28,7 +29,7 @@ const Registro = () => {
       return;
     }
 
-    const data = { username, email, password };
+    const data = { nombre, apellido, email, password };
 
     try {
       const res = await registerUser(data);
@@ -51,13 +52,20 @@ const Registro = () => {
       <h2 className={styles.RegistroContainerH2}>Registrarse</h2>
       <form onSubmit={handleSubmit}>
         <AuthInput
-          id="username"
+          id="nombre"
           type="text"
-          name="username"
-          placeholder="Nombre de usuario"
+          name="nombre"
+          placeholder="Nombre"
           required
-          className={styles.inputGroup}
-        />
+         className={styles.inputGroup}
+/>
+        <AuthInput
+          id="apellido"
+          type="text"
+          name="apellido"
+          placeholder="Apellido"
+          required
+          className={styles.inputGroup}/>
         <AuthInput
           id="email"
           type="email"
