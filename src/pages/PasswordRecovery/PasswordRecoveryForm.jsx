@@ -1,41 +1,40 @@
-import { Link } from 'react-router';
-import styles from "./PasswordRecovery.module.css";
-import AuthInput from '../../components/AuthInput/AuthInput';
-import Button from '../../components/Button/Button';
+import { useState } from "react";
+import { forgotPassword } from "../../services/authService.js";
+import styles from "../LoginForm/LoginForm.module.css";
+import AuthInput from "../../components/AuthInput/AuthInput.jsx";
 
-const PasswordRecoveryForm = () => {
-  const handleSubmit = (e) => {
+export default function PasswordRecoveryForm() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Se enviará un enlace de recuperación al correo electrónico.");
+    try {
+      const response = await forgotPassword({ email });
+      setMessage(response.message || "Revisa tu correo para continuar.");
+    } catch (err) {
+      setMessage("Error al enviar el correo. Intenta nuevamente.");
+    }
   };
 
   return (
     <div className={styles.loginFormContainer}>
-      <h2 className={styles.loginFormContainerH2}>¿Olvidaste tu contraseña?</h2>
+      <h2>Recuperar contraseña</h2>
       <form onSubmit={handleSubmit}>
-        <AuthInput
-          id="email"
-          label="Introduce tu correo electrónico"
-          type="email"
-          name="email"
-          placeholder="example@mail.com"
-          required
-          className={styles.inputGroup}
-        />
-        <Button variant='gradient' text={"Restablecer contraseña"} type="submit" />
+        <div className={styles.inputGroup}>
+          <label>Correo electrónico</label>
+          <AuthInput
+            type="email"
+            placeholder="Tu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <button className={styles.loginButton} type="submit">
+          Enviar enlace
+        </button>
       </form>
-
-      <div className={styles.signupLink}>
-        <p>¿No tienes una cuenta? <Link to="/registro" className={styles.signupLinkAnchor}>Registrarse</Link></p>
-      </div>
-
-      <div className={styles.termsLinks}>
-        <a href="#" className={styles.termsLink}>Términos y Condiciones</a>
-        <a href="#" className={styles.termsLink}>Soporte</a>
-        <a href="#" className={styles.termsLink}>Atención al Cliente</a>
-      </div>
+      {message && <p style={{ marginTop: "20px" }}>{message}</p>}
     </div>
   );
-};
-
-export default PasswordRecoveryForm;
+}

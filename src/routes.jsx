@@ -9,6 +9,7 @@ import AdminHomePage from './pages/Admin/AdminHomePage.jsx';
 import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryManagementPage.jsx';
 import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage.jsx";
 import Checkout from './pages/Checkout/Checkout.jsx';
+import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
 
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
   {
     path: '/recuperar',
     element: <PasswordRecoveryForm />,
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPassword />,
   },
     {
     path: "/categorias/:categoryId",

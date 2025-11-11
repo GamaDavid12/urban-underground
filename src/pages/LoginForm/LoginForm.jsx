@@ -1,15 +1,43 @@
-import { Link } from 'react-router';
-import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-import styles from './LoginForm.module.css';
-import AuthInput from '../../components/AuthInput/AuthInput';
-import SocialMediaButton from '../../components/SocialMediaButton/SocialMediaButton';
-import Button from '../../components/Button/Button';
+import { Link, useNavigate } from "react-router";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
+import { loginUser } from "../../services/authService.js";
+import styles from "./LoginForm.module.css";
+import AuthInput from "../../components/AuthInput/AuthInput.jsx";
+import SocialMediaButton from "../../components/SocialMediaButton/SocialMediaButton.jsx";
+import Button from "../../components/Button/Button.jsx";
 
 const LoginForm = () => {
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Iniciar sesión clickeado!');
+    setError("");
+
+    const data = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+
+    try {
+      const res = await loginUser(data);
+      console.log("✅ Usuario logueado:", res.user);
+
+      if (res.token) localStorage.setItem("token", res.token);
+      if (res.user) localStorage.setItem("user", JSON.stringify(res.user));
+
+      if (res.user?.rol === "ADMIN") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+
+    } catch (err) {
+      console.error("❌ Error al iniciar sesión:", err);
+      setError("Credenciales incorrectas o error en el servidor.");
+    }
   };
 
   return (
@@ -17,10 +45,10 @@ const LoginForm = () => {
       <h2 className={styles.loginFormContainerH2}>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <AuthInput
-          id="username"
-          type="text"
-          name="username"
-          placeholder="Nombre de usuario"
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
           required
           className={styles.inputGroup}
         />
@@ -36,20 +64,29 @@ const LoginForm = () => {
           <input type="checkbox" id="rememberMe" name="rememberMe" className={styles.rememberMeCheckbox} />
           <label htmlFor="rememberMe">Recuérdame</label>
         </div>
-        <Button variant='gradient' text="Iniciar Sesión" type="submit"/>
+
+        {error && <p className={styles.error}>{error}</p>}
+
+        <Button variant="gradient" text="Iniciar Sesión" type="submit" />
       </form>
 
       <p className={styles.forgotPassword}>
-        ¿Olvidaste tu contraseña? <Link to="/recuperar" className={styles.forgotPasswordLink}>Restablecer</Link>
+        ¿Olvidaste tu contraseña?{" "}
+        <Link to="/recuperar" className={styles.forgotPasswordLink}>
+          Restablecer
+        </Link>
       </p>
 
       <div className={styles.socialLogin}>
-        <SocialMediaButton icon={FcGoogle} onClick={() => console.log('Google login')} className={styles.socialIcon} />
-        <SocialMediaButton icon={FaFacebookF} onClick={() => console.log('Facebook login')} className={styles.socialIcon} />
+        <SocialMediaButton icon={FcGoogle} onClick={() => console.log("Google login")} className={styles.socialIcon} />
+        <SocialMediaButton icon={FaFacebookF} onClick={() => console.log("Facebook login")} className={styles.socialIcon} />
       </div>
 
       <p className={styles.signupLink}>
-        ¿No tienes una cuenta? <Link to="/registro" className={styles.signupLinkAnchor}>Registrarse</Link>
+        ¿No tienes una cuenta?{" "}
+        <Link to="/registro" className={styles.signupLinkAnchor}>
+          Registrarse
+        </Link>
       </p>
 
       <div className={styles.termsLinks}>
