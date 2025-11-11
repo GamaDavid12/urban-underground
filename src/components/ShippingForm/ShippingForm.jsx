@@ -3,7 +3,8 @@ import { useCart } from '../../context/CartContext';
 import styles from './ShippingForm.module.css';
 
 const ShippingForm = ({ onNextStep, onPrevStep }) => {
-  const { premiumShipping, setShippingCost, setShippingMethod } = useCart();
+const { premiumShipping, setPremiumShipping, setShippingCost, setShippingMethod } = useCart();
+
   const [selectedShipping, setSelectedShipping] = useState('standard');
 
   useEffect(() => {
@@ -101,24 +102,47 @@ const ShippingForm = ({ onNextStep, onPrevStep }) => {
             <span className={styles.shippingPrice}>$25.00</span>
           </label>
 
-          {premiumShipping && (
-            <label className={`${styles.shippingOption} ${selectedShipping === 'premium' ? styles.active : ''}`}>
-              <input
-                type="radio"
-                name="shippingMethod"
-                value="premium"
-                checked={selectedShipping === 'premium'}
-                onChange={handleShippingChange}
-                disabled={true} 
-              />
-              <div className={styles.shippingInfo}>
-                <span className={styles.shippingName}>Envío Premium</span>
-                <span className={styles.shippingDetails}>1 año de envíos gratis</span>
-              </div>
-              <span className={styles.shippingPrice}>$14.00</span>
-            </label>
-          )}
+{premiumShipping && (
+  <label className={`${styles.shippingOption} ${selectedShipping === 'premium' ? styles.active : ''}`}>
+    <input
+      type="radio"
+      name="shippingMethod"
+      value="premium"
+      checked={selectedShipping === 'premium'}
+      onChange={() => {
+        setSelectedShipping('premium');
+        setShippingMethod('premium');
+        setShippingCost(14);
+        if (typeof setPremiumShipping === 'function') {
+          setPremiumShipping(true);
+        }
+      }}
+    />
+    <div className={styles.shippingInfo}>
+      <span className={styles.shippingName}>Envío Premium</span>
+      <span className={styles.shippingDetails}>1 año de envíos gratis</span>
+    </div>
+    <span className={styles.shippingPrice}>$14.00</span>
+  </label>
+)}
         </div>
+
+        <label>
+  <input
+    type="checkbox"
+    checked={premiumShipping}
+    onChange={(e) => {
+      setPremiumShipping(e.target.checked);
+      if (!e.target.checked) {
+        setSelectedShipping('standard');
+        setShippingMethod('standard');
+        setShippingCost(12);
+      }
+    }}
+  />
+  Activar Envío Premium
+</label>
+
 
         <div className={styles.formActions}>
           <a href="#" className={styles.linkButton} onClick={onPrevStep}>{'<'} Volver a Información</a>

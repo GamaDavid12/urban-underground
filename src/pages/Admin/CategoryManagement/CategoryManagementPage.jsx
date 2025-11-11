@@ -4,6 +4,7 @@ import FormCategory from "./FormCategory.jsx";
 import HeaderTitle from "../../../components/HeaderTitle/HeaderTitle.jsx";
 import Button from '../../../components/Button/Button.jsx';
 import CategoryTable from './CategoryTable.jsx';
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../api/APIRoutes/index.js";
 
 const CategoryManagementPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

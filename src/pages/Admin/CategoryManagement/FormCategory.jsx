@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../../components/Button/Button.jsx";
+import { API_ROUTES, CATEGORIES_ROUTES } from "../../../api/APIRoutes/index.js";
 
 const FormCategory = ({ onCancel, onSuccess }) => {
   const [categoryName, setCategoryName] = useState("");

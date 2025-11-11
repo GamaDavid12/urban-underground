@@ -1,16 +1,13 @@
 @keyframes heartbeat {
   0% {
-    /* Estado inicial: 100% del tamaño normal */
     transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   }
   50% {
-    /* Punto medio: se agranda un 10% y el brillo de la sombra aumenta */
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.7); 
   }
   100% {
-    /* Estado final: vuelve al tamaño inicial */
     transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   }
@@ -49,6 +46,31 @@
     height: 10px;
     border-radius: 50%;
     background-color: #dddd;
+}
+
+.hotspotEditing {
+  animation: none !important; 
+  border: 4px solid #f97316;
+  background-color: rgba(249, 115, 22, 0.4); 
+  z-index: 100;
+}
+
+.hotspotNew {
+    border: 4px solid #10b981;
+    background-color: rgba(16, 185, 129, 0.4);
+}
+
+.hotspot[data-dragging='true'] {
+    cursor: grabbing !important;
+}
+
+.hotspotInnerAdmin {
+    width: auto;
+    height: auto;
+    font-size: 14px;
+    background: none;
+    line-height: 1;
+    color: white;
 }
 
 @media (max-width: 768px) {

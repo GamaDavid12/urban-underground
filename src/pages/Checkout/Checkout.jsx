@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react'; 
 import { useCart } from '../../context/CartContext';
 import FormEnvios from '../../components/FormEnvios/FormEnvios';
 import OrderSummary from '../../components/OrderSummary/OrderSummary';
@@ -6,24 +6,22 @@ import ShippingForm from '../../components/ShippingForm/ShippingForm';
 import PaymentForm from '../../components/PaymentForm/PaymentForm';
 import styles from './Checkout.module.css';
 
+const TAX_RATE = 0.10; // IVA 10%
+
 const Checkout = () => {
     const {
         cartItems,
         premiumShipping,
         shippingMethod,
-        discountValue
+        discountValue,
+        shippingAddress,
+        contactInfo,
+        setShippingMethod
     } = useCart();
 
     const [checkoutStep, setCheckoutStep] = useState('information');
-
-
-    const [contactData, setContactData] = useState(null);
-    const [shippingData, setShippingData] = useState(null);
-
-   const { shippingAddress, contactInfo } = useCart();
-   const { setShippingMethod } = useCart();
-
-
+    const [contactData, setContactData] = useState({});
+    const [shippingData, setShippingData] = useState({});
 
     const orderData = useMemo(() => {
         const subtotal = cartItems.reduce(
@@ -40,9 +38,11 @@ const Checkout = () => {
             envio = 25.00;
         }
 
-        const impuestos = subtotal * 0.10;
+        const impuestos = subtotal * TAX_RATE; // IVA 10%
+
         const totalSinDescuento = subtotal + envio + impuestos;
         const total = Math.max(totalSinDescuento - discountValue, 0);
+        
 
         return {
             items: cartItems,
@@ -59,16 +59,18 @@ const Checkout = () => {
             setCheckoutStep('shipping');
         } else if (checkoutStep === 'shipping') {
             setShippingData(data);
-            setShippingMethod(data.shippingMethod);
+            if (data.shippingMethod) setShippingMethod(data.shippingMethod);
             setCheckoutStep('payment');
         }
     };
 
-    const handlePrevStep = () => {
+    const handlePrevStep = (step) => {
         if (checkoutStep === 'shipping') {
             setCheckoutStep('information');
         } else if (checkoutStep === 'payment') {
             setCheckoutStep('shipping');
+        } else if (step) {
+            setCheckoutStep(step);
         }
     };
 
@@ -77,17 +79,15 @@ const Checkout = () => {
             case 'information':
                 return <FormEnvios onNextStep={handleNextStep} />;
             case 'shipping':
-                return <ShippingForm onNextStep={handleNextStep} onPrevStep={handlePrevStep} />;
+                return <ShippingForm onNextStep={handleNextStep} onPrevStep={() => handlePrevStep('information')} />;
             case 'payment':
                 return (
                    <PaymentForm
-                      onPrevStep={handlePrevStep}
-                     order={orderData}
-                     contactData={contactInfo}
-                      shippingData={shippingAddress}
+                      onPrevStep={() => handlePrevStep('shipping')}
+                      contactData={contactData || contactInfo}
+                      shippingData={shippingData || shippingAddress}
                       shippingMethod={shippingMethod}
                    />
-
                 );
             default:
                 return <FormEnvios onNextStep={handleNextStep} />;
@@ -114,4 +114,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-

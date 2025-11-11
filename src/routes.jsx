@@ -10,7 +10,7 @@ import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryMan
 import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage.jsx";
 import Checkout from './pages/Checkout/Checkout.jsx';
 import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
-
+import OrderConfirmation from './pages/OrderConfirmation/OrderConfirmation.jsx';
 
 const routes = [
   {
@@ -41,40 +41,38 @@ const routes = [
     path: "/categorias/:categoryId",
     element: <CategoryPage />,
   },
-// Rutas Admin
-    {
-        path: '/admin',
-        element: <DashboardLayout />,
-        children: [
-            {
-                index: true, 
-                element: <AdminHomePage />, 
-            },
-            {
-                path: 'gestionar-categorias',
-                element: <CategoryManagementPage />,
-            },
-            {
-                path: 'products',
-                element: <ProductManagementPage />,
-            }
-        ],
-    },
-    
-    {
+  // Rutas Admin
+  {
+    path: '/admin',
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true, 
+        element: <AdminHomePage />, 
+      },
+      {
+        path: 'gestionar-categorias',
+        element: <CategoryManagementPage />,
+      },
+      {
+        path: 'products',
+        element: <ProductManagementPage />,
+      }
+    ],
+  },
+  {
     path: '/checkout',
     element: <Checkout />,
   },
-    // Ruta de Fallback (404)
-    {
-        path: '*',
-        element: <div>404 - Página no encontrada</div>,
-    },
-
- // {
-  //path: '*',
-   //element: <div>404 - Página no encontrada</div>,
- //},
+  {
+    path: '/confirmacion',
+    element: <OrderConfirmation />,
+  },
+  // Ruta de Fallback (404)
+  {
+    path: '*',
+    element: <div>404 - Página no encontrada</div>,
+  },
 ];
 
 export default routes;
