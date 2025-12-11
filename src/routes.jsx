@@ -10,7 +10,7 @@ import CategoryManagementPage from './pages/Admin/CategoryManagement/CategoryMan
 import ProductManagementPage from "./pages/Admin/ProductManagement/ProductManagementPage.jsx";
 import Checkout from './pages/Checkout/Checkout.jsx';
 import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
-
+import AdminRouteGuard from './components/AdminRouteGuard/AdminRouteGuard.jsx';
 
 const routes = [
   {
@@ -42,24 +42,19 @@ const routes = [
     element: <CategoryPage />,
   },
 // Rutas Admin
-    {
-        path: '/admin',
-        element: <DashboardLayout />,
-        children: [
-            {
-                index: true, 
-                element: <AdminHomePage />, 
-            },
-            {
-                path: 'gestionar-categorias',
-                element: <CategoryManagementPage />,
-            },
-            {
-                path: 'products',
-                element: <ProductManagementPage />,
-            }
-        ],
-    },
+{
+    path: '/admin',
+    element: (
+      <AdminRouteGuard>
+        <DashboardLayout />
+      </AdminRouteGuard>
+    ),
+    children: [
+      { index: true, element: <AdminHomePage /> },
+      { path: 'gestionar-categorias', element: <CategoryManagementPage /> },
+      { path: 'products', element: <ProductManagementPage /> },
+    ],
+  },
     
     {
     path: '/checkout',

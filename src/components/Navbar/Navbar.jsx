@@ -14,19 +14,17 @@ const Navbar = ({ toggleSidebar }) => {
   const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
   
   const handleUserClick = () => {
-    // Abre/cierra el menú
     setShowDropdown(!showDropdown);
   };
   
   const handleLogout = () => {
-    logout(); // Llama a la función de useAuth para eliminar el token
+    logout();
     setShowDropdown(false);
   };
 
   let authContent;
   
   if (isAuthenticated) {
-    // Lógica para acortar el email
     const maxEmailLength = 15;
     const displayEmail = userEmail.length > maxEmailLength 
       ? userEmail.substring(0, maxEmailLength) + '...' 
@@ -38,7 +36,6 @@ const Navbar = ({ toggleSidebar }) => {
           {displayEmail}
         </span>
         
-        {/* Menú Desplegable */}
         {showDropdown && (
           <div className="dropdown-menu"> 
             <Link to="/perfil" className="dropdown-item" onClick={() => setShowDropdown(false)}>
@@ -52,7 +49,6 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
     );
   } else {
-    // Si no está autenticado, muestra el enlace "Ingresar"
     authContent = (
       <Link to="/registro" className="login">Ingresar</Link>
     );
@@ -75,7 +71,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       <div className="actions">
-        {authContent} {/* Aquí se renderiza el email con el dropdown o "Ingresar" */}
+        {authContent}
         
         <Button className={"px-5 py-1"} onClick={toggleCartSidebar} variant="grey" text={"Mi Carrito"} icon={ <ShoppingCart size={16} />}>
           {totalItemsInCart > 0 && (

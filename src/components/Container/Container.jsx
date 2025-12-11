@@ -1,5 +1,3 @@
-import React from "react";
-
 const Container = ({ backgroundImage, children }) => {
   return (
     <div

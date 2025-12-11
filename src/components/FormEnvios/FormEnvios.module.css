@@ -49,7 +49,6 @@
   color: #111; 
 } 
 
-/* Estilo base para todos los inputs */
 .input, 
 .select { 
   padding: 0.75rem 1rem; 
@@ -66,7 +65,7 @@
 .select:focus { 
   outline: none; 
   border-color: #222; 
-  box-shadow: 0 0 6px rgba(34, 34, 34, 0.1); /* Ajuste para un shadow más suave */
+  box-shadow: 0 0 6px rgba(34, 34, 34, 0.1);
 } 
 
 .checkboxLabel { 
@@ -79,19 +78,16 @@
   cursor: pointer; 
 } 
 
-/* Estilo para los grupos de inputs en una fila */
 .row { 
   display: flex; 
-  gap: 1rem; /* Espacio entre los inputs */
+  gap: 1rem;
   margin-bottom: 1rem; 
 } 
 
-/* Estilo para inputs que ocupan la mitad del ancho */
 .inputHalf { 
   width: 50%; 
 } 
 
-/* Estilo para inputs que ocupan un tercio del ancho */
 .inputThird { 
   width: 33.33%; 
 } 
@@ -157,7 +153,7 @@
 }
 
 .inputSearch {
-  padding-right: 2.5rem; /* Espacio para el icono */
+  padding-right: 2.5rem;
 }
 
 .searchIcon {

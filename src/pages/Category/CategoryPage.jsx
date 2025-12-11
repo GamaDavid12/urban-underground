@@ -1,79 +1,66 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ProductCard from "../../components/ProductCard/ProductCard";
-import { allProductsData } from '../../Mocks/productsMock.js';
+import ProductCard from "../../components/ProductCard/ProductCard.jsx";
+import { useAPI } from '../../hooks/useAPI.js';
+import { API_ROUTES, PRODUCTS_ROUTES } from '../../api/APIRoutes/index.js';
 
 const CategoryPage = () => {
-  const { categoryId } = useParams();
-  const [categoryData, setCategoryData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
+  const { request, loading, error } = useAPI();
 
-  const isViewAll = categoryId === 'verTodo';
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        let url = `/${API_ROUTES.PRODUCTS}${PRODUCTS_ROUTES.LIST}`;
+        if (categoryId && categoryId !== 'verTodo') {
+            url += `?categoria=${categoryId}`;
+        }
+        
+        const response = await request('GET', url);
+        setProducts(response.products || []);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchProducts();
+  }, [categoryId, request]);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-    setCategoryData(null);
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black text-yellow-400 text-xl font-bold">
+        Cargando productos...
+      </div>
+    );
+  }
 
-    setTimeout(() => {
-      const data = allProductsData[categoryId];
-      if (data) {
-        setCategoryData(data);
-      } else {
+  if (error) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black text-red-500 text-xl font-bold">
+        Error: {error}
+      </div>
+    );
+  }
 
-        setError("Categoría no encontrada.");
-      }
-      setLoading(false);
-    },10);
-  }, [categoryId]);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-black text-yellow-400 text-xl font-bold">
-        Cargando productos...
-      </div>
-    );
-  }
-
-if (error) {
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-black text-red-500 text-xl font-bold">
-      {error}
-      {isViewAll && <p className="text-gray-400 text-base mt-4">Asegúrate que el mock de productos esté bien configurado.</p>}
-    </div>
-  );
-}
-
-if (!categoryData) {
-  return null;
-}
-
-return (
-  <div className="p-4 md:p-8 bg-black text-white min-h-screen">
-    <div className="mb-8 pb-4 border-b border-gray-800">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end">
-        <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-4 text-yellow-400">
-          {categoryData.title} {categoryData.icon}
-        </h1>
-
-        {(!isViewAll || categoryData.subtitle) && (
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:items-end mt-4 md:mt-0">
-            <span className="text-sm uppercase text-gray-400">FILTROS</span>
-            <span className="text-base md:text-lg font-bold text-white">
-              {categoryData.subtitle}
-            </span>
-          </div>
-        )}
-      </div>
-    </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {categoryData.products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  </div>
-  );
+  return (
+    <div className="p-4 md:p-8 bg-black text-white min-h-screen">
+      <div className="mb-8 pb-4 border-b border-gray-800">
+         <h1 className="text-3xl md:text-4xl font-bold flex items-center gap-4 text-yellow-400 uppercase">
+           {categoryId === 'verTodo' ? 'TODOS LOS PRODUCTOS' : categoryId}
+         </h1>
+      </div>
+      
+      {products.length === 0 ? (
+          <p>No hay productos en esta categoría.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default CategoryPage;

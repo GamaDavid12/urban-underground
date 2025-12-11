@@ -6,21 +6,18 @@ const useProductForm = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-  //  clic Editar
   const handleEdit = (product) => {
     setSelectedProduct(product);
     setIsEditing(true);
   };
 
-  // Enviar el formulario (crear o editar)
 const handleSubmit = async (values, { resetForm }) => {
   try {
     const payload = {
       ...values,
-      categoryId: values.category,  // category ya es id numérico
+      categoryId: values.category,
     };
-    delete payload.category; // eliminar para evitar conflicto
+    delete payload.category;
 
     if (isEditing && selectedProduct) {
       await updateProduct(selectedProduct.id, payload);
@@ -38,7 +35,6 @@ const handleSubmit = async (values, { resetForm }) => {
   }
 };
 
-  // Resetear form 
   const handleReset = (resetForm) => {
     resetForm();
     setIsEditing(false);

@@ -1,4 +1,3 @@
-
 function MainLayout({ children }) {
   return (
     <div className="relative flex flex-col min-h-screen">

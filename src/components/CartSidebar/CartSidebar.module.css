@@ -12,8 +12,8 @@
 .cartSidebar {
   position: fixed;
   top: 0;
-  right: -400px; /* ancho aumentado */
-  width: 400px; /* antes 350px */
+  right: -400px;
+  width: 400px;
   height: 100vh;
   background-color: #010000;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
@@ -176,7 +176,7 @@
 .shippingInfo {
   display: flex;
   align-items: center;
-  white-space: nowrap; /* evita salto de línea */
+  white-space: nowrap;
   font-size: 0.9rem;
   color: #010000;
   margin-bottom: 19px;

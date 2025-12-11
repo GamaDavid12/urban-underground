@@ -33,7 +33,6 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
       price: product?.price || "",
       stock: product?.stock || "",
       brand: product?.brand || "",
-      // Inicializar category con el id (si existe)
       category: product?.category?.id || "",
       image: product?.image || null,
     },
@@ -48,9 +47,9 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
     onSubmit: (values) => {
       const payload = {
         ...values,
-        categoryId: values.category, // este es el campo que espera el backend
+        categoryId: values.category,
       };
-      delete payload.category; // eliminamos el antiguo campo para evitar confusión
+      delete payload.category;
       onSave(payload);
       onClose();
     }
@@ -99,7 +98,6 @@ const ProductModal = ({ isOpen, onClose, product, onSave, onDelete }) => {
               </div>
             ))}
 
-            {/* Select dinámico de categorías */}
             <div>
               <label className="block text-sm text-gray-300 mb-1 capitalize">
                 Categoría

@@ -16,14 +16,11 @@ const Checkout = () => {
 
     const [checkoutStep, setCheckoutStep] = useState('information');
 
-
     const [contactData, setContactData] = useState(null);
     const [shippingData, setShippingData] = useState(null);
 
    const { shippingAddress, contactInfo } = useCart();
    const { setShippingMethod } = useCart();
-
-
 
     const orderData = useMemo(() => {
         const subtotal = cartItems.reduce(
@@ -114,4 +111,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-

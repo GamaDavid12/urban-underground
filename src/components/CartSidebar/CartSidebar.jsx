@@ -3,7 +3,6 @@ import { useCart } from '../../context/CartContext';
 import styles from './CartSidebar.module.css';
 import { ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
 import CloseButton from '../Button/CloseButton';
 
 const CartSidebar = () => {
@@ -76,7 +75,6 @@ const CartSidebar = () => {
             </>
           ) : (
             cartItems.map((item) => (
-              // TODO: Componentizar esto a "CartItem"
               <div key={item.id} className={styles.cartItem}>
                 <img src={item.image} alt={item.name} className={styles.itemImage} />
                 <div className={styles.itemDetails}>
@@ -114,7 +112,6 @@ const CartSidebar = () => {
               <span>${totalWithShipping.toFixed(2)}</span>
             </div>
 
-            {/* Opción envío premium */}
             <div className={styles.shippingInfo}>
               <label>
                 <input
@@ -140,4 +137,3 @@ const CartSidebar = () => {
 };
 
 export default CartSidebar;
-

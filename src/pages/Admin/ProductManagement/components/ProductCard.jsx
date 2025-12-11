@@ -1,6 +1,3 @@
-// src/pages/Admin/ProductManagement/components/ProductCard.jsx
-import React from "react";
-
 const ProductCard = ({ product, onClose }) => {
   if (!product) return null;
   return (

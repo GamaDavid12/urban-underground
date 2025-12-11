@@ -6,13 +6,15 @@ import { allProductsData } from '../../Mocks/productsMock.js';
 import { hotspotPositions } from '../../Mocks/hotspotsMock.js';
 
 const getAllProductsFlat = (data) => {
-  const all = [];
+  const productsMap = {};
   for (const key in data) {
-    if (data.hasOwnProperty(key) && data[key].products) {
-      all.push(...data[key].products);
+    if (Object.prototype.hasOwnProperty.call(data, key) && data[key].products) {
+      data[key].products.forEach(product => {
+        productsMap[product.id] = product;
+      });
     }
   }
-  return all;
+  return productsMap;
 };
 
 const ImageMap = () => {
@@ -20,10 +22,7 @@ const ImageMap = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const flatProducts = useMemo(() => {
-    return getAllProductsFlat(allProductsData).reduce((acc, product) => {
-      acc[product.id] = product;
-      return acc;
-    }, {});
+    return getAllProductsFlat(allProductsData);
   }, []);
 
   const handleHotspotClick = (hotspot) => {
@@ -50,7 +49,7 @@ const ImageMap = () => {
           key={spot.id}
           top={spot.top}
           left={spot.left}
-          product={spot}
+          product={spot} 
           onClick={handleHotspotClick}
         />
       ))}

@@ -4,14 +4,11 @@ export const useFetch = (endpoint) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // ✅ Callback para evitar recrear la función en cada render
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      // 🔐 Obtener token JWT del localStorage
       const token = localStorage.getItem("token");
 
       if (!token) {

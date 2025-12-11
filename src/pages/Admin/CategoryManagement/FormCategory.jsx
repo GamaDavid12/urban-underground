@@ -15,7 +15,6 @@ const FormCategory = ({ onCancel, onSuccess }) => {
     setError(null);
 
     try {
-      // 🔐 Obtener el token del localStorage (ajusta el nombre si usas otro)
       const token = localStorage.getItem("token");
 
       if (!token) {
@@ -26,7 +25,7 @@ const FormCategory = ({ onCancel, onSuccess }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`, // ✅ se envía el token aquí
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({ nombre: categoryName.trim() }),
       });

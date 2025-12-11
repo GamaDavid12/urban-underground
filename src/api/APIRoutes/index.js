@@ -14,9 +14,13 @@ export const AUTH_ROUTES = {
 
 export const PRODUCTS_ROUTES = {
   LIST: "/list",
+  CREATE: "/create",
+  UPDATE: "/update",
+  DELETE: "/delete",
 };
 
 export const CATEGORIES_ROUTES = {
   LIST: "/list",
   CREATE: "/create",
+  DELETE: "/delete",
 };

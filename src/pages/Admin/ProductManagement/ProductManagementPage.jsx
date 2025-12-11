@@ -1,4 +1,3 @@
-// src/pages/Admin/ProductManagement/ProductManagementPage.jsx
 import { useState } from "react";
 import useProductCrud from "./hooks/useProductCrud";
 import ProductTable from "./components/ProductTable";
@@ -73,4 +72,3 @@ const handleSave = async (values) => {
 };
 
 export default ProductManagementPage;
-

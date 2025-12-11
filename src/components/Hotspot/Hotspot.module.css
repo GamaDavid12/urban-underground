@@ -1,16 +1,13 @@
 @keyframes heartbeat {
   0% {
-    /* Estado inicial: 100% del tamaño normal */
     transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   }
   50% {
-    /* Punto medio: se agranda un 10% y el brillo de la sombra aumenta */
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.7); 
   }
   100% {
-    /* Estado final: vuelve al tamaño inicial */
     transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   }
@@ -51,23 +48,63 @@
     background-color: #dddd;
 }
 
+.hotspotAdmin {
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    z-index: 20;
+    animation: none !important; 
+    transition: all 0.2s ease-in-out;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    border: 2px solid white; 
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.hotspotAdmin:hover {
+    background-color: #e55300;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+.hotspotHandle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white; 
+}
+
+.isDragging { 
+    transition: none !important; 
+    animation: none !important;
+    background-color: #ffff00 !important;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 1) !important;
+    cursor: grabbing !important;
+    transform: translate(-50%, -50%) scale(1.2) !important; 
+}
+
 @media (max-width: 768px) {
-  .hotspot {
+  .hotspot, .hotspotAdmin {
     width: 25px;
     height: 25px;
   }
-  .hotspotInner {
+  .hotspotInner, .hotspotHandle {
     width: 8px;
     height: 8px;
   }
 }
 
 @media (max-width: 480px) {
-  .hotspot {
-    width: 40%;
-    height: 30px;
+  .hotspot, .hotspotAdmin {
+    width: 20px;
+    height: 20px;
   }
-  .hotspotInner {
+  .hotspotInner, .hotspotHandle {
     width: 6px;
     height: 6px;
   }

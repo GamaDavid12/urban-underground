@@ -1,6 +1,3 @@
-// src/pages/Admin/ProductManagement/components/ProductTable.jsx
-import React from "react";
-
 const ProductTable = ({ products, onEdit, onDelete, onView }) => {
   if (!products || products.length === 0) {
     return (
@@ -71,5 +68,3 @@ const ProductTable = ({ products, onEdit, onDelete, onView }) => {
 };
 
 export default ProductTable;
-
-

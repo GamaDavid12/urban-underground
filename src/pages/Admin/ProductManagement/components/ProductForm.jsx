@@ -14,7 +14,6 @@ export const ProductForm = ({ onSubmit, initial = initialValues }) => {
     >
       {({ setFieldValue, values }) => (
         <Form className="flex flex-col gap-3">
-          {/* ...otros campos */}
 
           <label>Categoría:</label>
           {loading ? (
@@ -32,8 +31,6 @@ export const ProductForm = ({ onSubmit, initial = initialValues }) => {
             </Field>
           )}
           <ErrorMessage name="category" component="div" className="text-red-500 text-sm" />
-
-          {/* ...resto del formulario */}
         </Form>
       )}
     </Formik>

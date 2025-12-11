@@ -1,124 +1,116 @@
-import { useState, useEffect } from "react";
-
-const API_URL = "http://localhost:3000/products";
+import React, { useState, useEffect, useCallback } from 'react';
+import { API_ROUTES, PRODUCTS_ROUTES } from "../../../../api/APIRoutes/index.js";
+import { axiosAPI } from "../../../../api/api.js";
 
 const useProductCrud = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Función para obtener productos desde backend
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/list`);
-      if (!response.ok) throw new Error("Error al cargar productos");
-      const data = await response.json();
-
-      // Mapear campos para frontend
-      const formatted = data.products.map((p) => ({
+      const res = await axiosAPI.get(`/${API_ROUTES.PRODUCTS}${PRODUCTS_ROUTES.LIST}`);
+      
+      const formatted = res.data.products.map((p) => ({
         id: p.id,
         name: p.nombre,
-        brand: p.marca,
         description: p.descripcion,
         price: p.precio,
         image: p.imagenURL,
         category: p.categoria?.nombre || "",
+        categoryId: p.categoriaId,
         stock: p.stock,
       }));
-
       setProducts(formatted);
-    } catch (error) {
-      console.error("Error fetching products:", error);
+      setError(null);
+    } catch (err) {
+      console.error("Error fetching products:", err);
+      setError("No se pudieron cargar los productos.");
+    } finally {
+      setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
-  // Crear producto
-// en useProductCrud.js
+  const createProduct = async (newProduct) => {
+    try {
+      const formData = new FormData();
+      formData.append("nombre", newProduct.name);
+      formData.append("descripcion", newProduct.description || "");
+      formData.append("precio", newProduct.price);
+      formData.append("stock", newProduct.stock);
+      formData.append("categoriaId", newProduct.categoryId);
 
-const createProduct = async (newProduct) => {
-  try {
-    const formData = new FormData();
-    formData.append("nombre", newProduct.name);
-    formData.append("marca", newProduct.brand);
-    formData.append("descripcion", newProduct.description || "");
-    formData.append("precio", newProduct.price);
-    formData.append("stock", newProduct.stock);
-    formData.append("categoriaId", newProduct.categoryId || "1"); // Ajusta según tus categorías
+      if (newProduct.image instanceof File) {
+        formData.append("imagen", newProduct.image);
+      }
 
-    if (newProduct.image instanceof File) {
-      formData.append("imagen", newProduct.image);
+      await axiosAPI.post(`/${API_ROUTES.PRODUCTS}${PRODUCTS_ROUTES.CREATE}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      
+      await fetchProducts();
+    } catch (err) {
+      console.error("Error creando producto:", err);
+      throw err;
     }
+  };
 
-    const response = await fetch(`${API_URL}/create`, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Error al crear producto");
-    }
-
-    await fetchProducts();
-  } catch (error) {
-    console.error("Error creando producto:", error);
-  }
-};
-
-
-  // Actualizar producto
   const updateProduct = async (id, updatedData) => {
     try {
-      const response = await fetch(`${API_URL}/update/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre: updatedData.name,
-          marca: updatedData.brand,
-          descripcion: updatedData.description,
-          precio: updatedData.price,
-          imagenURL: updatedData.image, // Ajustar según backend
-          categoriaId: updatedData.categoryId,
-          stock: updatedData.stock,
-        }),
-      });
+      const formData = new FormData();
+      formData.append("nombre", updatedData.name);
+      formData.append("descripcion", updatedData.description || "");
+      formData.append("precio", updatedData.price);
+      formData.append("stock", updatedData.stock);
+      formData.append("categoriaId", updatedData.categoryId);
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Error al actualizar producto");
+      if (updatedData.image instanceof File) {
+        formData.append("imagen", updatedData.image);
+      } else {
       }
 
+      const url = `/${API_ROUTES.PRODUCTS}/update/${id}`;
+
+      await axiosAPI.put(url, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       await fetchProducts();
-    } catch (error) {
-      console.error("Error actualizando producto:", error);
+    } catch (err) {
+      console.error("Error actualizando producto:", err);
+      throw err;
     }
   };
 
-  // Eliminar producto
   const deleteProduct = async (id) => {
-    if (!window.confirm("¿Seguro que deseas eliminar este producto?")) return;
+    if (!window.confirm("¿Estás seguro de que deseas eliminar este producto?")) return;
 
     try {
-      const response = await fetch(`${API_URL}/delete/${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Error al eliminar producto");
-      }
-
+      const url = `/${API_ROUTES.PRODUCTS}/delete/${id}`;
+      
+      await axiosAPI.delete(url);
+      
       await fetchProducts();
-    } catch (error) {
-      console.error("Error eliminando producto:", error);
+    } catch (err) {
+      console.error("Error eliminando producto:", err);
+      alert("Error al eliminar el producto. Verifica la consola.");
     }
   };
 
-  return { products, fetchProducts, createProduct, updateProduct, deleteProduct };
+  return { 
+    products, 
+    loading, 
+    error, 
+    fetchProducts, 
+    createProduct, 
+    updateProduct, 
+    deleteProduct 
+  };
 };
 
 export default useProductCrud;

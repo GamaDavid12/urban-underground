@@ -49,19 +49,27 @@ useEffect(() => {
     }
   }, [cartItems]);
 
-  const addToCart = (product) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        return [...prevItems, { ...product, quantity: 1 }];
-      }
-    });
-    setIsCartSidebarOpen(true);
-  };
+const addToCart = (product) => {
+    const normalizedPrice = product.precio || product.price;
+
+    const normalizedProduct = {
+      ...product,
+      price: parseFloat(normalizedPrice),
+      image: product.imagenURL || product.image,
+    };
+
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === normalizedProduct.id);
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.id === normalizedProduct.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevItems, { ...normalizedProduct, quantity: 1 }];
+      }
+    });
+    setIsCartSidebarOpen(true);
+  };
 
   const removeFromCart = (productId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
@@ -86,8 +94,13 @@ useEffect(() => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
+    return cartItems.reduce((total, item) => {
+      const price = parseFloat(item.price || item.precio) || 0;
+      const quantity = parseInt(item.quantity, 10) || 0;
+
+      return total + price * quantity;
+    }, 0);
+  };
 
   return (
     <CartContext.Provider
